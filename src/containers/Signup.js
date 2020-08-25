@@ -3,7 +3,7 @@ import request from 'superagent';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
-} from '../helpers/AppConfig';
+} from '../helpers/appConfig';
 
 const SignUp = () => {
   const [image, setImage] = useState(null);

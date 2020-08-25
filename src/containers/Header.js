@@ -10,6 +10,13 @@ const Header = ({ token, setToken, user }) => {
   return (
     <header className="header">
       <h2 className="heading-title">HOUZIA</h2>
+      {
+       user && 
+       <div>
+         <p>{user.username}</p>
+        {user.admin && <button>New House</button>}
+       </div>
+       }
       {token && <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button>}
     </header>
   );

@@ -1,4 +1,11 @@
-import { SIGNUP_SUCCESS, LOGIN_SUCCESS, FETCH_LOADING, AUTH_ERROR,  SET_TOKEN } from '../actions/types';
+import {
+  SIGNUP_SUCCESS,
+  LOGIN_SUCCESS, 
+  FETCH_LOADING, 
+  AUTH_ERROR,  
+  SET_TOKEN, 
+  CURRENT_USER_SUCCESS 
+} from '../actions/types';
 
 const initialState = {
   token: '',
@@ -33,8 +40,13 @@ const authReducer = (state = initialState, action) => {
         data: action.data,
         loading: false,
         error: null,
-        user: action.data.user
       };
+    
+    case CURRENT_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.data,
+      }
 
     case SET_TOKEN:
       return {

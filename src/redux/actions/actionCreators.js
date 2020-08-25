@@ -7,6 +7,7 @@ import {
   NEW_HOUSE_SUCCESS,
   ALL_HOUSES_SUCCESS,
   HOUSE_ERROR,
+  CURRENT_USER_SUCCESS,
  } from './types';
 import Cookies from 'universal-cookie';
 
@@ -46,6 +47,11 @@ const allHousesSuccess = data => ({
   data,
 });
 
+const currentUserSuccess = data => ({
+  type: CURRENT_USER_SUCCESS,
+  data,
+})
+
 const fetchLoading = () => ({
   type: FETCH_LOADING,
 });
@@ -70,5 +76,6 @@ export {
     newHouseSuccess,
     allHousesSuccess,
     fetchHouseError,
+    currentUserSuccess,
 };
 

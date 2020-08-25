@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { setToken } from '../redux/actions/actionCreators';
+import CurrentUser from '../helpers/CurrentUser';
 
 const cookies = new Cookies();
 
 const RequireAuth = ({ token, setToken }) => {
+
   if (!token) {
     const cookieToken = cookies.get('token');
     if (cookieToken) {
       setToken(cookieToken);
       return null;
     }
+
     return <Redirect to="/signin" />;
   }
-  return null;
+
+  return <CurrentUser />;
 };
 
 const mapDispatchToProps = dispatch => (

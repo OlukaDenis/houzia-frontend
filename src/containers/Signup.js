@@ -1,39 +1,36 @@
 import React, { useState } from 'react';
-import { storage } from '../helpers/firebase';
-const CLOUDINARY_UPLOAD_PRESET = 'your_upload_preset_id';
-const CLOUDINARY_UPLOAD_URL = 'cloudinary://946649153678361:tccn3g62hzcXLLZyjI_FvIEoftU@olukadenis-me';
+import request from 'superagent';
+import {
+  CLOUDINARY_UPLOAD_PRESET,
+  CLOUDINARY_UPLOAD_URL,
+} from '../helpers/AppConfig';
 
 const SignUp = () => {
   const [image, setImage] = useState(null);
   const [imgUrl, setImgUrl] = useState('');
 
-  const handleImageChange = (e) => {
+  const handleImageChange = e => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = e => {
     e.preventDefault();
 
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    uploadTask.on('state_changed',
-      snapshot => {},
-      error => {
-        console.log(error);  
-      },
-      () => {
-        storage
-        .ref('images')
-        .child(image.name)
-        .getDownloadURL()
-        .then(url => {
-          console.log(url);
-          setImgUrl(url);
-        })
-        .catch(err => console.log('Download error: ', err))
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', image);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
       }
-    )
+
+      if (response.body.secure_url !== '') {
+        setImgUrl(response.body.secure_url);
+      }
+    });
   };
 
   console.log('Uplaoded: ', imgUrl);
@@ -51,7 +48,7 @@ const SignUp = () => {
 export default SignUp;
 
 {/* <input name="file" type="file"
-   class="file-upload" data-cloudinary-field="image_id"
+  class="file-upload" data-cloudinary-field="image_id"
    data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/> */}
 
 //    <CloudinaryContext cloudName="olukadenis-me">

@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
 import request from 'superagent';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { createUser } from '../redux/actions/authAction';
+import NoAuth from '../helpers/NoAuth';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
 } from '../helpers/appConfig';
 
-const SignUp = () => {
-  const [image, setImage] = useState(null);
-  const [imgUrl, setImgUrl] = useState('');
+const Signup = ({ signup }) => {
+  const [picture, setPicture] = useState(null);
+  // const [image, setImage] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [password_confirmation, setPasswordConfirmation] = useState('');
 
   const handleImageChange = e => {
     if (e.target.files[0]) {
-      setImage(e.target.files[0]);
+      setPicture(e.target.files[0]);
     }
   };
 
-  const handleImageUpload = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
       .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-      .field('file', image);
+      .field('file', picture);
 
     upload.end((err, response) => {
       if (err) {
@@ -28,31 +36,71 @@ const SignUp = () => {
       }
 
       if (response.body.secure_url !== '') {
-        setImgUrl(response.body.secure_url);
+        // setImage(response.body.secure_url);
+        const image = response.body.secure_url;
+        console.log('Uplaoded: ', image);
+
+        if (password !== password_confirmation) {
+          console.log('Passwords do not match');
+        } else {
+          const newUser = { username, email, image, password, password_confirmation };
+          signup(newUser);
+        }
       }
     });
   };
 
-  console.log('Uplaoded: ', imgUrl);
-
   return (
     <div>
-      <form onSubmit={handleImageUpload}>
+      <NoAuth />
+      <h1>Signup</h1>
+      <form onSubmit={handleSubmit}>
+      <input
+            onChange={e => setUserName(e.target.value)} 
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          />
+          <br />
+        <input
+            onChange={e => setEmail(e.target.value)} 
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+        <br/>
+        <br/>
+            
+          <input
+            onChange={e => setPassword(e.target.value)} 
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+        />
+        <br/>
+        <br/>
+        <input
+            onChange={e => setPasswordConfirmation(e.target.value)} 
+            type="password"
+            name="confirm_password"
+            placeholder="Confirm Password"
+            required
+        />
+        <br />
         <input type="file" onChange={handleImageChange} />
+        <br />
         <input type="submit" value="Upload" />
       </form>
+      <Link to="/signin">Signin</Link>
     </div>
   );
 };
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(createUser(user)),
+});
 
-{/* <input name="file" type="file"
-  class="file-upload" data-cloudinary-field="image_id"
-   data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/> */}
-
-//    <CloudinaryContext cloudName="olukadenis-me">
-//     <Image publicId="sample" format="jpg">
-//         <Transformation crop="fill" gravity="faces" width="300" height="200"/>
-//     </Image>
-// </CloudinaryContext>
+export default connect(null, mapDispatchToProps)(Signup);

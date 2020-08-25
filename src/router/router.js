@@ -4,14 +4,14 @@ import Signin from '../containers/Signin';
 import Signup from '../containers/Signup';
 import Home from '../containers/Home';
 
-const AppRouter = () => {
+const AppRouter = () => (
   <Router>
-  <Switch>
-    <Route path="/signin" component={Signin} />
-    <Route path="/signup" component={Signup} />
-    <Route exact path="/" component={Home} />
-  </Switch>
-</Router>
-}
+    <Switch>
+      <Route path="/signin" component={Signin} />
+      <Route path="/signup" component={Signup} />
+      <Route exact path="/" component={Home} />
+    </Switch>
+  </Router>
+)
 
 export default AppRouter;

@@ -6,8 +6,8 @@ const createUser = newUser => (
   dispatch => {
     dispatch(fetchLoading());
     axios.post(
-      BASE_URL,
-      { 'user': newUser }
+      `${BASE_URL}/signup`,
+      newUser
     )
     .then(response => dispatch(signupSuccess(response.data)))
     .catch(err => dispatch(fetchError(err.response)));
@@ -18,8 +18,8 @@ const loginUser = user => (
   dispatch => {
     dispatch(fetchLoading());
     axios.post(
-      `${BASE_URL}/login`,
-      { 'user': user }
+      `${BASE_URL}/auth/login`,
+      user 
     )
     .then(response => dispatch(loginSuccess(response.data)))
     .catch(err => dispatch(fetchError(err)));

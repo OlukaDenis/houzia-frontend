@@ -1,13 +1,11 @@
 import React from 'react';
 import '../styles/App.css';
-import SignUp from '../containers/Signup';
+import AppRouter from '../router/router';
 
 function App() {
   return (
     <div className="App">
-     <h1>Houzia</h1>
-
-     <SignUp />
+      <AppRouter />
     </div>
   );
 }

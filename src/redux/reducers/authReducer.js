@@ -47,7 +47,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         token: null,
         data: action.error,
-        error: action.error.response.data.error,
+        error: action.error.data.message,
       };
 
     default: 

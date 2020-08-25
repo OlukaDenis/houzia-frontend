@@ -54,11 +54,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
-  console.log(state);
-  return ({
-  token: state.authReducer.token,
-  error: state.authReducer.error,
-})
+    console.log(state);
+    return ({
+    token: state.authReducer.token,
+    error: state.authReducer.error,
+  })
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

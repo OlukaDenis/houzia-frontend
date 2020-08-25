@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { signupSuccess, loginSuccess, fetchError, fetchLoading, setToken } from './actionCreators';
+import { signupSuccess, loginSuccess, fetchError, fetchLoading } from './actionCreators';
 import { BASE_URL } from '../../helpers/appConfig';
 
 const createUser = newUser => (
@@ -22,7 +22,7 @@ const loginUser = user => (
       user 
     )
     .then(response => dispatch(loginSuccess(response.data)))
-    .catch(err => dispatch(fetchError(err)));
+    .catch(err => dispatch(fetchError(err.response)));
   }
 )
 

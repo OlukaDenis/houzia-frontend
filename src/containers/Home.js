@@ -1,28 +1,36 @@
 import React, { useEffect } from 'react';
 import RootLayout from '../components/RootLayout';
 import { connect } from 'react-redux';
-// import AddProject from '../containers/AddProject';
 import { allHouses } from '../redux/actions/houseAction';
 import HouseListItem from '../components/HouseListItem';
+import Loading from '../components/Loading';
 
-const HomePage = ({ allHouses, data, token }) => {
+const HomePage = (props) => {
+  const { allHouses, data, token, loading} = props;
+  const { match: { path } } = props;
 
   useEffect(() => {
     if (token) {
       allHouses(token);
     }
-  }, [allHouses]);
+  }, [token, allHouses]);
 
-  return(
-    <RootLayout>
+  const MainPage = () => {
+    return (
       <div>
-        <h3>You are welcome!</h3>
           { 
             data.map( house => (
               <HouseListItem key={house.id} house={house} />
             ))
           }
-    </div>
+      </div>
+    )
+  };
+
+  return(
+    <RootLayout>
+      { loading && <Loading />}
+      { path === '/' && <MainPage />}
     </RootLayout>
   )
 };
@@ -36,6 +44,7 @@ const mapStateToProps = state => {
     return ({
     data: state.houseReducer.data,
     token: state.authReducer.token,
+    loading: state.houseReducer.loading,
   })
 };
 

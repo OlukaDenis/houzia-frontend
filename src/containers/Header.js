@@ -14,8 +14,8 @@ const Header = ({ token, setToken, user }) => {
       {
        user && 
        <div>
-         <p>{user.username}</p>
         {user.admin && <Link to="/newHouse">New House</Link>}
+        <Link to="/profile">My Profile</Link>
        </div>
        }
       {token && <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button>}

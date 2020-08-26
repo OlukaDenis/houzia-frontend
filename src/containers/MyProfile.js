@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RootLayout from '../components/RootLayout';
+import HouseListItem from '../components/HouseListItem';
 
-const MyProfile = ({ user }) => {
+const MyProfile = ({ user, favoriteHouses }) => {
 
   const UserProfile = () => {
     return (
@@ -15,16 +16,32 @@ const MyProfile = ({ user }) => {
     )
   };
 
+  const UserFavorites = () => {
+    
+    return (
+      <div>
+        <h3> My Favorites</h3>
+          { 
+            favoriteHouses.map( house => (
+              <HouseListItem key={house.id} house={house} />
+            ))
+          }
+      </div>
+    )
+  };
+
   return (
     <RootLayout>
       { user && <UserProfile />}
+      { favoriteHouses && <UserFavorites /> }
     </RootLayout>
   )
 };
 
 const mapStateToProps = state => ({
   token: state.authReducer.token,
-  user: state.authReducer.user
+  user: state.authReducer.userProfile,
+  favoriteHouses: state.authReducer.userFavorites,
 });
 
 

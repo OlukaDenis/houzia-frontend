@@ -12,7 +12,9 @@ const initialState = {
   loading: false,
   error: null,
   data: {},
-	user: {},
+  userProfile: {},
+  userFavorites: [],
+  userExpense: 0,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -45,7 +47,9 @@ const authReducer = (state = initialState, action) => {
     case CURRENT_USER_SUCCESS:
       return {
         ...state,
-        user: action.data,
+        userProfile: action.data.profile,
+        userExpense: action.data.expense,
+        userFavorites: action.data.favorites,
       }
 
     case SET_TOKEN:

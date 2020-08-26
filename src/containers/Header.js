@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { setToken } from '../redux/actions/actionCreators';
 
 const Header = ({ token, setToken, user }) => {
+
   const handleLogoutClick = () => {
     setToken();
   };
@@ -14,6 +15,7 @@ const Header = ({ token, setToken, user }) => {
       {
        user && 
        <div>
+          <Link to="/">Home</Link>
         {user.admin && <Link to="/newHouse">New House</Link>}
         <Link to="/profile">My Profile</Link>
        </div>
@@ -26,7 +28,7 @@ const Header = ({ token, setToken, user }) => {
 
 const mapStateToProps = state => ({
     token: state.authReducer.token,
-    user: state.authReducer.user
+    user: state.authReducer.userProfile,
   });
 
 const mapDispatchToProps = dispatch => ({

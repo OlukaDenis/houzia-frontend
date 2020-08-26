@@ -22,7 +22,9 @@ const MyProfile = ({ user, favoriteHouses }) => {
       <div>
         <h3> My Favorites</h3>
           { 
-            favoriteHouses.map( house => (
+            favoriteHouses.length === 0 
+            ? <p>No favorites </p>
+            : favoriteHouses.map( house => (
               <HouseListItem key={house.id} house={house} />
             ))
           }
@@ -33,7 +35,7 @@ const MyProfile = ({ user, favoriteHouses }) => {
   return (
     <RootLayout>
       { user && <UserProfile />}
-      { favoriteHouses && <UserFavorites /> }
+      { <UserFavorites />  }
     </RootLayout>
   )
 };

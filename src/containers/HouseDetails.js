@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import RootLayout from '../components/RootLayout';
 import { connect } from 'react-redux';
 import { fetchHouseDetails, addHouseToFavorite, removeHouseFromFavorite } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
 
 const HouseDetails = (props) => {
+  let buttonText = ''; 
+
   const { 
     fetchHouseDetails,
     house, 
@@ -18,20 +20,17 @@ const HouseDetails = (props) => {
 
   const { match: { params } } = props;
   const houseId = params.id;
-
-  let buttonText = '';
-  isFavorite ? buttonText = 'Remove from Favorites' : buttonText = 'Add to Favorites';
-
-  console.log(favorite.id)
-  const addRemoveFavorite = e => {
-    e.preventDefault();
-
+  
+  isFavorite ? buttonText = 'Remove from Favorite' : buttonText = 'Add to favorite';
+  const addRemoveFavorite = () => {
     const favData = { house_id: houseId }
     if (isFavorite) {
-      removeHouseFromFavorite(token, houseId, favorite.id );
+      removeHouseFromFavorite(token, favData, favorite.id );
     } else {
       addHouseToFavorite(token, favData);
     }
+    
+    window.location.reload(false);
   };
 
   useEffect(() => {
@@ -41,7 +40,6 @@ const HouseDetails = (props) => {
   }, [token, fetchHouseDetails]);
 
   const House = () => {
-
     return (
       <div>
         <div className="detailPicture">
@@ -61,9 +59,7 @@ const HouseDetails = (props) => {
       <h2>{house.name}</h2>
       <p>{house.description}</p>
 
-      <form onSubmit={addRemoveFavorite}>
-        <input type="submit" value={buttonText} />
-      </form>
+      <button onClick={addRemoveFavorite}>{buttonText}</button>
     
       </div>
     )

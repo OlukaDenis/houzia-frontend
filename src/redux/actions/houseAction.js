@@ -57,12 +57,19 @@ const addHouseToFavorite = (token, houseId) => (
 
 const removeHouseFromFavorite = (token, houseId, favoriteId) => (
   dispatch => {
-    dispatch(fetchLoading());
-    axios.delete(`${BASE_URL}/favorites/${favoriteId}`, { house_id: houseId }, {
-      headers: {
-        Authorization: token,
+    const data = JSON.stringify(houseId);
+    const config = {
+      method: 'delete',
+      url: `${BASE_URL}/favorites/${favoriteId}`,
+      headers: { 
+        Authorization: token, 
+        'Content-Type': 'application/json'
       },
-    })
+      data : data
+    };
+
+    dispatch(fetchLoading());
+    axios(config)
     .then(response => dispatch(removeFavorite(response.data)))
     .catch(error => dispatch(fetchHouseError(error.response)));
   }

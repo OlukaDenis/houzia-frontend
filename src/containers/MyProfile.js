@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RootLayout from '../components/RootLayout';
 import HouseListItem from '../components/HouseListItem';
+import { formatCurrency } from '../helpers/appUtils';
 
-const MyProfile = ({ user, favoriteHouses }) => {
+const MyProfile = ({ user, favoriteHouses, expense }) => {
 
   const UserProfile = () => {
     return (
@@ -12,6 +13,7 @@ const MyProfile = ({ user, favoriteHouses }) => {
         <img src={user.image} alt={user.username} />
         <h3>{user.username}</h3>
         <p>{user.email}</p>
+        <p><span>My expense: </span>{formatCurrency(expense)}</p>
       </div>
     )
   };
@@ -44,6 +46,7 @@ const mapStateToProps = state => ({
   token: state.authReducer.token,
   user: state.authReducer.userProfile,
   favoriteHouses: state.authReducer.userFavorites,
+  expense: state.authReducer.userExpense,
 });
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatCurrency } from '../helpers/appUtils';
 
 const HouseListItem = ({ house }) => {
   const houseId = house.id;
@@ -14,7 +15,7 @@ const HouseListItem = ({ house }) => {
         <div className="img-overlay" />
       </Link>
       <p>{house.name}</p>
-      <p>{house.price}</p>
+      <p>{formatCurrency(house.price)}</p>
     </div>
   )
 };

@@ -1,4 +1,12 @@
-import { ALL_HOUSES_SUCCESS, HOUSE_ERROR, FETCH_LOADING, NEW_HOUSE_SUCCESS, HOUSE_DETAILS_SUCCESS } from '../actions/types';
+import { 
+  ALL_HOUSES_SUCCESS,
+  HOUSE_ERROR, 
+  FETCH_LOADING, 
+  NEW_HOUSE_SUCCESS, 
+  HOUSE_DETAILS_SUCCESS,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE,
+ } from '../actions/types';
 
 const initialState = {
   loading: false,
@@ -6,7 +14,9 @@ const initialState = {
   data: [],
   response: {},
   selectedHouse: {},
-  isMyFavorite: false,
+  isFavorite: false,
+  favorite: {},
+  addRemove: {},
 };
 
 const houseReducer = (state = initialState, action) => {
@@ -33,7 +43,22 @@ const houseReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         selectedHouse: action.data.house,
-        isMyFavorite: action.data.favorites,
+        isFavorite: action.data.isFavorite,
+        favorite: action.data.favorite,
+      };
+
+    case ADD_FAVORITE:
+      return {
+        ...state,
+        loading: false,
+        addRemove: action.data,
+      };
+
+    case REMOVE_FAVORITE:
+      return {
+        ...state,
+        loading: false,
+        addRemove: action.data,
       };
 
     case FETCH_LOADING:

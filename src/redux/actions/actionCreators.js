@@ -11,6 +11,8 @@ import {
   UPLOAD_HOUSE_IMAGE,
   UPLOAD_ERROR,
   HOUSE_DETAILS_SUCCESS,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE,
  } from './types';
 import Cookies from 'universal-cookie';
 
@@ -60,6 +62,16 @@ const houseDetails = data => ({
   data,
 });
 
+const addFavorite = data => ({
+  type: ADD_FAVORITE,
+  data,
+});
+
+const removeFavorite = data => ({
+  type: REMOVE_FAVORITE,
+  data,
+})
+
 const newImageUpload = imageUrl => ({
   type: UPLOAD_HOUSE_IMAGE,
   imageUrl,
@@ -98,5 +110,7 @@ export {
     newImageUpload,
     uploadError,
     houseDetails,
+    addFavorite,
+    removeFavorite,
 };
 

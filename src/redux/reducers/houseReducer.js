@@ -1,10 +1,11 @@
-import { ALL_HOUSES_SUCCESS, HOUSE_ERROR, FETCH_LOADING, NEW_HOUSE_SUCCESS } from '../actions/types';
+import { ALL_HOUSES_SUCCESS, HOUSE_ERROR, FETCH_LOADING, NEW_HOUSE_SUCCESS, HOUSE_DETAILS_SUCCESS } from '../actions/types';
 
 const initialState = {
   loading: false,
   error: null,
   data: [],
   response: {},
+  selectedHouse: {},
 };
 
 const houseReducer = (state = initialState, action) => {
@@ -23,6 +24,14 @@ const houseReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         response: action.data, 
+      };
+
+    case HOUSE_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        selectedHouse: action.data.house,
       };
 
     case FETCH_LOADING:

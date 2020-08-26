@@ -5,6 +5,7 @@ import Signup from '../containers/Signup';
 import Home from '../containers/Home';
 import AddHouse from '../containers/AddHouse';
 import MyProfile from '../containers/MyProfile';
+import HouseDetails from '../containers/HouseDetails';
 
 const AppRouter = () => (
   <Router>
@@ -14,6 +15,7 @@ const AppRouter = () => (
       <Route path="/signup" component={Signup} />
       <Route path="/newHouse" component={AddHouse} />
       <Route path="/profile" component={MyProfile} />
+      <Route path="/house/:id" component={HouseDetails} />
     </Switch>
   </Router>
 )

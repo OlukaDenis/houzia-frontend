@@ -10,8 +10,7 @@ import {
   CURRENT_USER_SUCCESS,
   UPLOAD_HOUSE_IMAGE,
   UPLOAD_ERROR,
-  MY_FAVORITES,
-  FAVORITE_ERROR,
+  HOUSE_DETAILS_SUCCESS,
  } from './types';
 import Cookies from 'universal-cookie';
 
@@ -51,13 +50,13 @@ const allHousesSuccess = data => ({
   data,
 });
 
-const myFavorites = data => ({
-  type: MY_FAVORITES,
+const currentUserSuccess = data => ({
+  type: CURRENT_USER_SUCCESS,
   data,
 });
 
-const currentUserSuccess = data => ({
-  type: CURRENT_USER_SUCCESS,
+const houseDetails = data => ({
+  type: HOUSE_DETAILS_SUCCESS,
   data,
 });
 
@@ -85,11 +84,6 @@ const uploadError = error => ({
   error,
 });
 
-const favoriteError = error => ({
-  type: FAVORITE_ERROR,
-  error,
-});
-
 
 export {
     setToken,
@@ -103,7 +97,6 @@ export {
     currentUserSuccess,
     newImageUpload,
     uploadError,
-    myFavorites,
-    favoriteError,
+    houseDetails,
 };
 

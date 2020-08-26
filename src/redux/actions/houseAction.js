@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../../helpers/appConfig';
-import { allHousesSuccess, fetchHouseError, fetchLoading } from './actionCreators';
+import { allHousesSuccess, fetchHouseError, fetchLoading, newHouseSuccess } from './actionCreators';
 
 const allHouses = token => (
   dispatch => {
@@ -15,6 +15,20 @@ const allHouses = token => (
   }
 );
 
+const addNewHouse = (house, token) => (
+  dispatch => {
+    dispatch(fetchLoading());
+    axios.post(`${BASE_URL}/houses`, house, {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then(response => dispatch(newHouseSuccess(response.data)))
+      .catch(error => dispatch(fetchHouseError(error.response)));
+  }
+);
+
 export {
   allHouses,
+  addNewHouse,
 }

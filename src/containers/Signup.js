@@ -11,7 +11,6 @@ import {
 
 const Signup = ({ signup }) => {
   const [picture, setPicture] = useState(null);
-  // const [image, setImage] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');

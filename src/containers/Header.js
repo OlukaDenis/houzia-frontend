@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setToken } from '../redux/actions/actionCreators';
 
 const Header = ({ token, setToken, user }) => {
@@ -14,7 +15,7 @@ const Header = ({ token, setToken, user }) => {
        user && 
        <div>
          <p>{user.username}</p>
-        {user.admin && <button>New House</button>}
+        {user.admin && <Link to="/newHouse">New House</Link>}
        </div>
        }
       {token && <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button>}

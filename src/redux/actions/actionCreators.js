@@ -8,6 +8,8 @@ import {
   ALL_HOUSES_SUCCESS,
   HOUSE_ERROR,
   CURRENT_USER_SUCCESS,
+  UPLOAD_HOUSE_IMAGE,
+  UPLOAD_ERROR,
  } from './types';
 import Cookies from 'universal-cookie';
 
@@ -50,7 +52,12 @@ const allHousesSuccess = data => ({
 const currentUserSuccess = data => ({
   type: CURRENT_USER_SUCCESS,
   data,
-})
+});
+
+const newImageUpload = imageUrl => ({
+  type: UPLOAD_HOUSE_IMAGE,
+  imageUrl,
+});
 
 const fetchLoading = () => ({
   type: FETCH_LOADING,
@@ -66,6 +73,11 @@ const fetchHouseError = error => ({
   error,
 });
 
+const uploadError = error => ({
+  type: UPLOAD_ERROR,
+  error,
+});
+
 
 export {
     setToken,
@@ -77,5 +89,7 @@ export {
     allHousesSuccess,
     fetchHouseError,
     currentUserSuccess,
+    newImageUpload,
+    uploadError,
 };
 

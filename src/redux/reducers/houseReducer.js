@@ -6,6 +6,7 @@ const initialState = {
   data: [],
   response: {},
   selectedHouse: {},
+  isMyFavorite: false,
 };
 
 const houseReducer = (state = initialState, action) => {
@@ -32,6 +33,7 @@ const houseReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         selectedHouse: action.data.house,
+        isMyFavorite: action.data.favorites,
       };
 
     case FETCH_LOADING:

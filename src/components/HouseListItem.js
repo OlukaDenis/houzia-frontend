@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { houseShape } from '../helpers/propTypeShapes';
 import { formatCurrency } from '../helpers/appUtils';
 
 const HouseListItem = ({ house }) => {
@@ -18,6 +20,10 @@ const HouseListItem = ({ house }) => {
       <p>{formatCurrency(house.price)}</p>
     </div>
   );
+};
+
+HouseListItem.propTypes = {
+  house: PropTypes.objectOf(houseShape).isRequired,
 };
 
 export default HouseListItem;

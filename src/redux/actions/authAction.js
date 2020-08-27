@@ -28,11 +28,11 @@ const loginUser = user => (
   }
 );
 
-const fetchCurrentUser = (user_id, token) => (
+const fetchCurrentUser = (userId, token) => (
   dispatch => {
     dispatch(fetchLoading());
     axios.get(
-      `${BASE_URL}/users/${user_id}`, {
+      `${BASE_URL}/users/${userId}`, {
         headers: {
           Authorization: token,
         },

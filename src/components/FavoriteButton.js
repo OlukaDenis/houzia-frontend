@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { favoriteShape } from '../helpers/propTypeShapes';
 import { addHouseToFavorite, removeHouseFromFavorite } from '../redux/actions/houseAction';
 
 const FavoriteButton = props => {
@@ -11,19 +13,18 @@ const FavoriteButton = props => {
     removeHouseFromFavorite,
     token,
     body,
+    loading,
   } = props;
 
   useEffect(() => {
     setLiked(isFavorite);
   });
 
-  const handleClick = e => {
+  const handleClick = () => {
     if (liked) {
       removeHouseFromFavorite(token, body, favorite.id);
-      console.log('In favorite');
     } else {
       addHouseToFavorite(token, body);
-      console.log('Not favorite');
     }
     window.location.reload(false);
   };
@@ -31,23 +32,39 @@ const FavoriteButton = props => {
   const text = liked ? 'Remove from Favorite' : 'Add to Favorite';
 
   return (
-    <button onClick={handleClick}>{ text }</button>
+    <>
+      { loading && <p>Updating favorites</p>}
+      { !loading && <button type="button" onClick={handleClick}>{ text }</button>}
+    </>
   );
 };
 
 const mapDispatchToProps = dispatch => ({
   addHouseToFavorite: (token, body) => dispatch(addHouseToFavorite(token, body)),
-  removeHouseFromFavorite: (favoriteId, token, body) => dispatch(removeHouseFromFavorite(favoriteId, token, body)),
+  removeHouseFromFavorite: (favoriteId, token, body) => {
+    dispatch(removeHouseFromFavorite(favoriteId, token, body));
+  },
 });
 
-const mapStateToProps = state => {
-  console.log(state);
-  return ({
-    isFavorite: state.houseReducer.isFavorite,
-    favorite: state.houseReducer.favorite,
-    token: state.authReducer.token,
-    loading: state.houseReducer.loading,
-  });
+const mapStateToProps = state => ({
+  isFavorite: state.houseReducer.isFavorite,
+  favorite: state.houseReducer.favorite,
+  token: state.authReducer.token,
+  loading: state.houseReducer.loading,
+});
+
+FavoriteButton.propTypes = {
+  token: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  addHouseToFavorite: PropTypes.func.isRequired,
+  removeHouseFromFavorite: PropTypes.func.isRequired,
+  favorite: PropTypes.objectOf(favoriteShape).isRequired,
+  body: PropTypes.objectOf(
+    PropTypes.shape({
+      house_id: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteButton);

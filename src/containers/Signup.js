@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import request from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { createUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
 import {
@@ -14,7 +15,7 @@ const Signup = ({ signup }) => {
   const [email, setEmail] = useState('');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [password_confirmation, setPasswordConfirmation] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
   const handleImageChange = e => {
     if (e.target.files[0]) {
@@ -31,23 +32,21 @@ const Signup = ({ signup }) => {
 
     upload.end((err, response) => {
       if (err) {
-        console.error(err);
+        return <p>Error while uploading image</p>;
       }
 
       if (response.body.secure_url !== '') {
-        // setImage(response.body.secure_url);
         const image = response.body.secure_url;
-        console.log('Uplaoded: ', image);
 
-        if (password !== password_confirmation) {
-          console.log('Passwords do not match');
-        } else {
-          const newUser = {
-            username, email, image, password, password_confirmation,
-          };
-          signup(newUser);
+        if (password !== passwordConfirmation) {
+          return <p>Password do not match</p>;
         }
+        const newUser = {
+          username, email, image, password, password_confirmation: passwordConfirmation,
+        };
+        signup(newUser);
       }
+      return null;
     });
   };
 
@@ -103,5 +102,9 @@ const Signup = ({ signup }) => {
 const mapDispatchToProps = dispatch => ({
   signup: user => dispatch(createUser(user)),
 });
+
+Signup.propTypes = {
+  signup: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Signup);

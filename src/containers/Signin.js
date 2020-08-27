@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { loginUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
 
@@ -53,12 +54,15 @@ const mapDispatchToProps = dispatch => ({
   login: user => dispatch(loginUser(user)),
 });
 
-const mapStateToProps = state => {
-  console.log(state);
-  return ({
-    token: state.authReducer.token,
-    error: state.authReducer.error,
-  });
+const mapStateToProps = state => ({
+  token: state.authReducer.token,
+  error: state.authReducer.error,
+});
+
+Signin.propTypes = {
+  login: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

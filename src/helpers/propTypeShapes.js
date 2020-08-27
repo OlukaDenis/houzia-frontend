@@ -27,7 +27,7 @@ const favoriteShape = PropTypes.shape({
   user_id: PropTypes.number.isRequired,
   updated_at: PropTypes.instanceOf(Date),
   created_at: PropTypes.instanceOf(Date),
-})
+});
 
 export {
   userShape,

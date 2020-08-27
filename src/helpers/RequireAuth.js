@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import PropTypes from 'prop-types';
 import { setToken } from '../redux/actions/actionCreators';
 import CurrentUser from './CurrentUser';
 
@@ -32,5 +33,10 @@ const mapStateToProps = state => (
     token: state.authReducer.token,
   }
 );
+
+RequireAuth.propTypes = {
+  token: PropTypes.string.isRequired,
+  setToken: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequireAuth);

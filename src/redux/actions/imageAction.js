@@ -21,6 +21,4 @@ const newHouseImageUpload = image => (
   }
 );
 
-export {
-  newHouseImageUpload,
-};
+export default newHouseImageUpload;

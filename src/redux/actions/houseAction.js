@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { BASE_URL } from '../../helpers/appConfig';
 import {
-  allHousesSuccess, fetchHouseError, fetchLoading, newHouseSuccess, houseDetails, addFavorite, removeFavorite,
+  allHousesSuccess,
+  fetchHouseError,
+  fetchLoading,
+  newHouseSuccess,
+  houseDetails,
+  addFavorite,
+  removeFavorite,
 } from './actionCreators';
 
 const allHouses = token => (

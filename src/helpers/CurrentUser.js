@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Cookies from 'universal-cookie';
 import { fetchCurrentUser } from '../redux/actions/authAction';
 import { parseToken } from './appUtils';
 
 const CurentUser = ({ token, setCurrentUser }) => {
-  const user_id = parseToken(token);
+  const userId = parseToken(token);
   useEffect(() => {
-    setCurrentUser(user_id, token);
+    setCurrentUser(userId, token);
   }, [setCurrentUser]);
 
   return null;
@@ -15,7 +14,7 @@ const CurentUser = ({ token, setCurrentUser }) => {
 
 const mapDispatchToProps = dispatch => (
   {
-    setCurrentUser: (user_id, token) => dispatch(fetchCurrentUser(user_id, token)),
+    setCurrentUser: (userId, token) => dispatch(fetchCurrentUser(userId, token)),
   }
 );
 

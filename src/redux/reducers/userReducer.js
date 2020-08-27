@@ -2,12 +2,14 @@ import {
   ALL_USERS_SUCCESS,
   AUTH_ERROR, 
   FETCH_LOADING, 
+  UPDATE_USER_SUCCESS,
  } from '../actions/types';
 
 const initialState = {
   loading: false,
   error: null,
   data: [],
+  response: {},
 };
 
 const userReducer = (state = initialState, action) => {
@@ -18,6 +20,14 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         data: action.data,
+      };
+
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        response: action.data,
       };
 
     case FETCH_LOADING:

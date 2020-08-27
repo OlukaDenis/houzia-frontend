@@ -3,35 +3,30 @@ import RootLayout from '../components/RootLayout';
 import { connect } from 'react-redux';
 import { fetchHouseDetails, addHouseToFavorite, removeHouseFromFavorite } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
+import FavoriteButton from '../components/FavoriteButton';    
 
 const HouseDetails = (props) => {
-  let buttonText = ''; 
 
   const { 
     fetchHouseDetails,
     house, 
-    isFavorite, 
     token, 
     loading, 
-    favorite, 
-    removeHouseFromFavorite, 
-    addHouseToFavorite 
   } = props;
 
   const { match: { params } } = props;
   const houseId = params.id;
-  
-  isFavorite ? buttonText = 'Remove from Favorite' : buttonText = 'Add to favorite';
-  const addRemoveFavorite = () => {
-    const favData = { house_id: houseId }
-    if (isFavorite) {
-      removeHouseFromFavorite(token, favData, favorite.id );
-    } else {
-      addHouseToFavorite(token, favData);
-    }
+  const favData = { house_id: houseId }
+
+  // const addRemoveFavorite = () => {
+  //   if (isFavorite) {
+  //    
+  //   } else {
+  //     addHouseToFavorite(token, favData);
+  //   }
     
-    window.location.reload(false);
-  };
+  //   window.location.reload(false);
+  // };
 
   useEffect(() => {
     if (token && houseId) {
@@ -59,7 +54,7 @@ const HouseDetails = (props) => {
       <h2>{house.name}</h2>
       <p>{house.description}</p>
 
-      <button onClick={addRemoveFavorite}>{buttonText}</button>
+      <FavoriteButton body={favData} />
     
       </div>
     )
@@ -75,18 +70,14 @@ const HouseDetails = (props) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchHouseDetails: (id, token) => dispatch(fetchHouseDetails(id, token)),
-  addHouseToFavorite: (token, house_id) => dispatch(addHouseToFavorite(token, house_id)),
-  removeHouseFromFavorite: (favoriteId, token, houseId) => dispatch(removeHouseFromFavorite(favoriteId, token, houseId)),
 });
 
 const mapStateToProps = state => {
     console.log(state);
     return ({
     house: state.houseReducer.selectedHouse,
-    isFavorite: state.houseReducer.isFavorite,
-    favorite: state.houseReducer.favorite,
-    token: state.authReducer.token,
     loading: state.houseReducer.loading,
+    token: state.authReducer.token,
   })
 };
 

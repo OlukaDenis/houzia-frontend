@@ -14,6 +14,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   ALL_USERS_SUCCESS,
+  UPDATE_USER_SUCCESS,
  } from './types';
 import Cookies from 'universal-cookie';
 
@@ -50,6 +51,11 @@ const newHouseSuccess = data => ({
 
 const allUsersSuccess = data => ({
   type: ALL_USERS_SUCCESS,
+  data,
+});
+
+const updateUserSuccess = data => ({
+  type: UPDATE_USER_SUCCESS,
   data,
 });
 
@@ -119,5 +125,6 @@ export {
     addFavorite,
     removeFavorite,
     allUsersSuccess,
+    updateUserSuccess,
 };
 

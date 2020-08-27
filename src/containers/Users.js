@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import RootLayout from '../components/RootLayout';
 import { connect } from 'react-redux';
-import { fetchAllUsers } from '../redux/actions/userAction';
+import { fetchAllUsers, updateUserDetails } from '../redux/actions/userAction';
 import Loading from '../components/Loading';
+import AdminButton from '../components/AdminButton';
 
-const Users = ({ data, allUsers, token, loading }) => {
+const Users = ({ data, allUsers, token, loading, user, updateUserDetails }) => {
 
   useEffect(() => {
     if (token) {
@@ -21,7 +22,12 @@ const Users = ({ data, allUsers, token, loading }) => {
           : data.map( user => (
             <div key={user.id}>
               <p>{user.username}</p>
-              { !user.admin && <button>Make Admin</button> }
+              <AdminButton 
+                isAdmin={user.admin}
+                user={user}
+                token={token}
+                updateUser={updateUserDetails}
+              />
             </div>
           ))
         }
@@ -32,12 +38,14 @@ const Users = ({ data, allUsers, token, loading }) => {
 
 const mapDispatchToProps = dispatch => ({
   allUsers: token => dispatch(fetchAllUsers(token)),
+  updateUserDetails: (token, user, userId) => dispatch(updateUserDetails(token, user, userId)),
 });
 
 const mapStateToProps = state => {
     console.log(state);
     return ({
     data: state.userReducer.data,
+    user: state.authReducer.userProfile,
     token: state.authReducer.token,
     loading: state.userReducer.loading,
   })

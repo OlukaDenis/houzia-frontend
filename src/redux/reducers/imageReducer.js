@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const imageReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_LOADING:
       return {
         ...state,
@@ -27,7 +27,7 @@ const imageReducer = (state = initialState, action) => {
         ...state,
         error: action.error,
       };
-    
+
     default:
       return state;
   }

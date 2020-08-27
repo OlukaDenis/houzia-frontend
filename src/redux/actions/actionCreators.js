@@ -1,4 +1,5 @@
-import { 
+import Cookies from 'universal-cookie';
+import {
   SIGNUP_SUCCESS,
   FETCH_LOADING,
   AUTH_ERROR,
@@ -15,8 +16,7 @@ import {
   REMOVE_FAVORITE,
   ALL_USERS_SUCCESS,
   UPDATE_USER_SUCCESS,
- } from './types';
-import Cookies from 'universal-cookie';
+} from './types';
 
 const cookies = new Cookies();
 
@@ -25,7 +25,7 @@ const setToken = token => {
   return ({
     type: SET_TOKEN,
     token,
-  })
+  });
 };
 
 const signupSuccess = data => {
@@ -33,7 +33,7 @@ const signupSuccess = data => {
   return ({
     type: SIGNUP_SUCCESS,
     data,
-  })
+  });
 };
 
 const loginSuccess = data => {
@@ -41,8 +41,8 @@ const loginSuccess = data => {
   return ({
     type: LOGIN_SUCCESS,
     data,
-  })
-}
+  });
+};
 
 const newHouseSuccess = data => ({
   type: NEW_HOUSE_SUCCESS,
@@ -82,7 +82,7 @@ const addFavorite = data => ({
 const removeFavorite = data => ({
   type: REMOVE_FAVORITE,
   data,
-})
+});
 
 const newImageUpload = imageUrl => ({
   type: UPLOAD_HOUSE_IMAGE,
@@ -108,23 +108,21 @@ const uploadError = error => ({
   error,
 });
 
-
 export {
-    setToken,
-    signupSuccess,
-    loginSuccess,
-    fetchError,
-    fetchLoading,
-    newHouseSuccess,
-    allHousesSuccess,
-    fetchHouseError,
-    currentUserSuccess,
-    newImageUpload,
-    uploadError,
-    houseDetails,
-    addFavorite,
-    removeFavorite,
-    allUsersSuccess,
-    updateUserSuccess,
+  setToken,
+  signupSuccess,
+  loginSuccess,
+  fetchError,
+  fetchLoading,
+  newHouseSuccess,
+  allHousesSuccess,
+  fetchHouseError,
+  currentUserSuccess,
+  newImageUpload,
+  uploadError,
+  houseDetails,
+  addFavorite,
+  removeFavorite,
+  allUsersSuccess,
+  updateUserSuccess,
 };
-

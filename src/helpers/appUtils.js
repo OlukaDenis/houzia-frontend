@@ -6,9 +6,7 @@ const parseToken = token => {
   return user.user_id;
 };
 
-const formatCurrency = amount => {
-  return amount.toLocaleString('en-US', { style: 'currency', currency: 'UGX' });
-}
+const formatCurrency = amount => amount.toLocaleString('en-US', { style: 'currency', currency: 'UGX' });
 
 export {
   parseToken,

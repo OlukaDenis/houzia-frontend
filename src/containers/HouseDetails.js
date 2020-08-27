@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import RootLayout from '../components/RootLayout';
 import { connect } from 'react-redux';
+import RootLayout from '../components/RootLayout';
 import { fetchHouseDetails, addHouseToFavorite, removeHouseFromFavorite } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
-import FavoriteButton from '../components/FavoriteButton';    
+import FavoriteButton from '../components/FavoriteButton';
 
-const HouseDetails = (props) => {
-
-  const { 
+const HouseDetails = props => {
+  const {
     fetchHouseDetails,
-    house, 
-    token, 
-    loading, 
+    house,
+    token,
+    loading,
   } = props;
 
   const { match: { params } } = props;
   const houseId = params.id;
-  const favData = { house_id: houseId }
+  const favData = { house_id: houseId };
 
   // const addRemoveFavorite = () => {
   //   if (isFavorite) {
-  //    
+  //
   //   } else {
   //     addHouseToFavorite(token, favData);
   //   }
-    
+
   //   window.location.reload(false);
   // };
 
@@ -34,38 +33,35 @@ const HouseDetails = (props) => {
     }
   }, [token, fetchHouseDetails]);
 
-  const House = () => {
-    return (
+  const House = () => (
+    <div>
+      <div className="detailPicture">
+        <img
+          data-testid="image"
+          src={house.image}
+          alt={house.name}
+        />
+        <div className="img-overlay" />
+      </div>
       <div>
-        <div className="detailPicture">
-          <img
-            data-testid="image"
-            src={house.image}
-            alt={house.name}
-          />
-          <div className="img-overlay" />
-        </div>
-        <div>
-          <p>
+        <p>
           <span>{house.price}</span>
           <span>monthly</span>
-          </p>
-        </div>
+        </p>
+      </div>
       <h2>{house.name}</h2>
       <p>{house.description}</p>
 
       <FavoriteButton body={favData} />
-    
-      </div>
-    )
-  };
+
+    </div>
+  );
 
   return (
     <RootLayout>
       { loading ? <Loading /> : <House />}
     </RootLayout>
-  )
-
+  );
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -73,12 +69,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
-    console.log(state);
-    return ({
+  console.log(state);
+  return ({
     house: state.houseReducer.selectedHouse,
     loading: state.houseReducer.loading,
     token: state.authReducer.token,
-  })
+  });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails);

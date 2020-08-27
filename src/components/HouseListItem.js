@@ -17,7 +17,7 @@ const HouseListItem = ({ house }) => {
       <p>{house.name}</p>
       <p>{formatCurrency(house.price)}</p>
     </div>
-  )
+  );
 };
 
 export default HouseListItem;

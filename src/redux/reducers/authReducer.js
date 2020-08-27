@@ -1,10 +1,10 @@
 import {
   SIGNUP_SUCCESS,
-  LOGIN_SUCCESS, 
-  FETCH_LOADING, 
-  AUTH_ERROR,  
-  SET_TOKEN, 
-  CURRENT_USER_SUCCESS 
+  LOGIN_SUCCESS,
+  FETCH_LOADING,
+  AUTH_ERROR,
+  SET_TOKEN,
+  CURRENT_USER_SUCCESS,
 } from '../actions/types';
 
 const initialState = {
@@ -18,15 +18,14 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-	switch (action.type) {
-
+  switch (action.type) {
     case FETCH_LOADING:
       return {
         ...state,
         loading: true,
       };
 
-    case SIGNUP_SUCCESS: 
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         token: action.data.auth_token,
@@ -35,7 +34,7 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
 
-    case LOGIN_SUCCESS: 
+    case LOGIN_SUCCESS:
       return {
         ...state,
         token: action.data.auth_token,
@@ -43,14 +42,14 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
-    
+
     case CURRENT_USER_SUCCESS:
       return {
         ...state,
         userProfile: action.data.profile,
         userExpense: action.data.expense,
         userFavorites: action.data.favorites,
-      }
+      };
 
     case SET_TOKEN:
       return {
@@ -58,7 +57,7 @@ const authReducer = (state = initialState, action) => {
         token: action.token,
       };
 
-    case AUTH_ERROR: 
+    case AUTH_ERROR:
       return {
         ...state,
         token: null,
@@ -66,9 +65,9 @@ const authReducer = (state = initialState, action) => {
         error: action.error.data.message,
       };
 
-    default: 
+    default:
       return state;
-	}
+  }
 };
 
 export default authReducer;

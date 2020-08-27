@@ -20,6 +20,6 @@ const AppRouter = () => (
       <Route path="/users" component={Users} />
     </Switch>
   </Router>
-)
+);
 
 export default AppRouter;

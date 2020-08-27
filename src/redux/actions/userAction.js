@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { allUsersSuccess, fetchError, fetchLoading, updateUserSuccess } from './actionCreators';
+import {
+  allUsersSuccess, fetchError, fetchLoading, updateUserSuccess,
+} from './actionCreators';
 import { BASE_URL } from '../../helpers/appConfig';
 
 const fetchAllUsers = token => (
@@ -10,10 +12,10 @@ const fetchAllUsers = token => (
         headers: {
           Authorization: token,
         },
-      }
+      },
     )
-    .then(response => dispatch(allUsersSuccess(response.data)))
-    .catch(error => dispatch(fetchError(error.response)));
+      .then(response => dispatch(allUsersSuccess(response.data)))
+      .catch(error => dispatch(fetchError(error.response)));
   }
 );
 
@@ -25,10 +27,10 @@ const updateUserDetails = (token, user, userId) => (
         headers: {
           Authorization: token,
         },
-      }
+      },
     )
-    .then(response => dispatch(updateUserSuccess(response.data)))
-    .catch(error => dispatch(fetchError(error.response)));
+      .then(response => dispatch(updateUserSuccess(response.data)))
+      .catch(error => dispatch(fetchError(error.response)));
   }
 );
 

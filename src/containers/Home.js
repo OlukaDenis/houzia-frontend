@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import RootLayout from '../components/RootLayout';
 import { connect } from 'react-redux';
+import RootLayout from '../components/RootLayout';
 import { allHouses } from '../redux/actions/houseAction';
 import HouseListItem from '../components/HouseListItem';
 import Loading from '../components/Loading';
 
-const HomePage = (props) => {
-  const { allHouses, data, token, loading} = props;
+const HomePage = props => {
+  const {
+    allHouses, data, token, loading,
+  } = props;
   const { match: { path } } = props;
 
   useEffect(() => {
@@ -15,24 +17,22 @@ const HomePage = (props) => {
     }
   }, [token, allHouses]);
 
-  const MainPage = () => {
-    return (
-      <div>
-          { 
-            data.map( house => (
+  const MainPage = () => (
+    <div>
+      {
+            data.map(house => (
               <HouseListItem key={house.id} house={house} />
             ))
           }
-      </div>
-    )
-  };
+    </div>
+  );
 
-  return(
+  return (
     <RootLayout>
       { loading && <Loading />}
       { path === '/' && <MainPage />}
     </RootLayout>
-  )
+  );
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -40,13 +40,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
-    console.log(state);
-    return ({
+  console.log(state);
+  return ({
     data: state.houseReducer.data,
     token: state.authReducer.token,
     loading: state.houseReducer.loading,
-  })
+  });
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

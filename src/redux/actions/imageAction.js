@@ -23,4 +23,4 @@ const newHouseImageUpload = image => (
 
 export {
   newHouseImageUpload,
-}
+};

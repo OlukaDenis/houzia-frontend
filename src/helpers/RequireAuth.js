@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { setToken } from '../redux/actions/actionCreators';
-import CurrentUser from '../helpers/CurrentUser';
+import CurrentUser from './CurrentUser';
 
 const cookies = new Cookies();
 
 const RequireAuth = ({ token, setToken }) => {
-
   if (!token) {
     const cookieToken = cookies.get('token');
     if (cookieToken) {

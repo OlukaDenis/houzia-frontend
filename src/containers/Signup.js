@@ -25,7 +25,7 @@ const Signup = ({ signup }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+    const upload = request.post(CLOUDINARY_UPLOAD_URL)
       .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
       .field('file', picture);
 
@@ -42,7 +42,9 @@ const Signup = ({ signup }) => {
         if (password !== password_confirmation) {
           console.log('Passwords do not match');
         } else {
-          const newUser = { username, email, image, password, password_confirmation };
+          const newUser = {
+            username, email, image, password, password_confirmation,
+          };
           signup(newUser);
         }
       }
@@ -54,39 +56,39 @@ const Signup = ({ signup }) => {
       <NoAuth />
       <h1>Signup</h1>
       <form onSubmit={handleSubmit}>
-      <input
-            onChange={e => setUserName(e.target.value)} 
-            type="text"
-            name="username"
-            placeholder="Username"
-            required
-          />
-          <br />
         <input
-            onChange={e => setEmail(e.target.value)} 
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-          />
-        <br/>
-        <br/>
-            
-          <input
-            onChange={e => setPassword(e.target.value)} 
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
+          onChange={e => setUserName(e.target.value)}
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
         />
-        <br/>
-        <br/>
+        <br />
         <input
-            onChange={e => setPasswordConfirmation(e.target.value)} 
-            type="password"
-            name="confirm_password"
-            placeholder="Confirm Password"
-            required
+          onChange={e => setEmail(e.target.value)}
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <br />
+        <br />
+
+        <input
+          onChange={e => setPassword(e.target.value)}
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <br />
+        <br />
+        <input
+          onChange={e => setPasswordConfirmation(e.target.value)}
+          type="password"
+          name="confirm_password"
+          placeholder="Confirm Password"
+          required
         />
         <br />
         <input type="file" onChange={handleImageChange} />

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { BASE_URL } from '../../helpers/appConfig';
-import { allHousesSuccess, fetchHouseError, fetchLoading, newHouseSuccess, houseDetails, addFavorite, removeFavorite } from './actionCreators';
+import {
+  allHousesSuccess, fetchHouseError, fetchLoading, newHouseSuccess, houseDetails, addFavorite, removeFavorite,
+} from './actionCreators';
 
 const allHouses = token => (
   dispatch => {
@@ -28,7 +30,6 @@ const fetchHouseDetails = (id, token) => (
   }
 );
 
-
 const addNewHouse = (house, token) => (
   dispatch => {
     dispatch(fetchLoading());
@@ -50,8 +51,8 @@ const addHouseToFavorite = (token, houseId) => (
         Authorization: token,
       },
     })
-    .then(response => dispatch(addFavorite(response.data)))
-    .catch(error => dispatch(fetchHouseError(error.response)));
+      .then(response => dispatch(addFavorite(response.data)))
+      .catch(error => dispatch(fetchHouseError(error.response)));
   }
 );
 
@@ -61,17 +62,17 @@ const removeHouseFromFavorite = (token, houseId, favoriteId) => (
     const config = {
       method: 'delete',
       url: `${BASE_URL}/favorites/${favoriteId}`,
-      headers: { 
-        Authorization: token, 
-        'Content-Type': 'application/json'
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
       },
-      data : data
+      data,
     };
 
     dispatch(fetchLoading());
     axios(config)
-    .then(response => dispatch(removeFavorite(response.data)))
-    .catch(error => dispatch(fetchHouseError(error.response)));
+      .then(response => dispatch(removeFavorite(response.data)))
+      .catch(error => dispatch(fetchHouseError(error.response)));
   }
 );
 
@@ -81,4 +82,4 @@ export {
   fetchHouseDetails,
   addHouseToFavorite,
   removeHouseFromFavorite,
-}
+};

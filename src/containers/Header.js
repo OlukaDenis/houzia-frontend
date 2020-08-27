@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { setToken } from '../redux/actions/actionCreators';
 
 const Header = ({ token, setToken, user }) => {
-
   const handleLogoutClick = () => {
     setToken();
   };
@@ -13,26 +12,27 @@ const Header = ({ token, setToken, user }) => {
     <header className="header">
       <h2 className="heading-title">HOUZIA</h2>
       {
-       user && 
+       user
+       && (
        <div>
-          <Link to="/">Home</Link>
-        {user.admin && <Link to="/newHouse">New House</Link>}
-        <Link to="/profile">My Profile</Link>
+         <Link to="/">Home</Link>
+         {user.admin && <Link to="/newHouse">New House</Link>}
+         <Link to="/profile">My Profile</Link>
        </div>
+       )
        }
       {token && <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button>}
     </header>
   );
 };
 
-
 const mapStateToProps = state => ({
-    token: state.authReducer.token,
-    user: state.authReducer.userProfile,
-  });
+  token: state.authReducer.token,
+  user: state.authReducer.userProfile,
+});
 
 const mapDispatchToProps = dispatch => ({
-    setToken: () => dispatch(setToken('')),
-  });
+  setToken: () => dispatch(setToken('')),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

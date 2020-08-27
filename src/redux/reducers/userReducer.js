@@ -1,9 +1,9 @@
-import { 
+import {
   ALL_USERS_SUCCESS,
-  AUTH_ERROR, 
-  FETCH_LOADING, 
+  AUTH_ERROR,
+  FETCH_LOADING,
   UPDATE_USER_SUCCESS,
- } from '../actions/types';
+} from '../actions/types';
 
 const initialState = {
   loading: false,
@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ALL_USERS_SUCCESS:
       return {
         ...state,
@@ -35,7 +35,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
-    
+
     case AUTH_ERROR:
       return {
         ...state,

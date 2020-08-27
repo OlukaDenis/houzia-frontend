@@ -14,6 +14,7 @@ const MyProfile = ({ user, favoriteHouses, expense }) => {
         <h3>{user.username}</h3>
         <p>{user.email}</p>
         <p><span>My expense: </span>{formatCurrency(expense)}</p>
+        { user.admin && <Link to="/users"><button>Edit Users</button></Link>}
       </div>
     )
   };

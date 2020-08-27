@@ -13,6 +13,7 @@ import {
   HOUSE_DETAILS_SUCCESS,
   ADD_FAVORITE,
   REMOVE_FAVORITE,
+  ALL_USERS_SUCCESS,
  } from './types';
 import Cookies from 'universal-cookie';
 
@@ -44,6 +45,11 @@ const loginSuccess = data => {
 
 const newHouseSuccess = data => ({
   type: NEW_HOUSE_SUCCESS,
+  data,
+});
+
+const allUsersSuccess = data => ({
+  type: ALL_USERS_SUCCESS,
   data,
 });
 
@@ -112,5 +118,6 @@ export {
     houseDetails,
     addFavorite,
     removeFavorite,
+    allUsersSuccess,
 };
 

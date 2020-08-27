@@ -39,7 +39,7 @@ const fetchCurrentUser = (user_id, token) => (
     .then(response => dispatch(currentUserSuccess(response.data)))
     .catch(error => dispatch(fetchError(error.response)));
   }
-)
+);
 
 export {
   createUser,

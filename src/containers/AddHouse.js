@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import request from 'superagent';
+import PropTypes from 'prop-types';
 import { addNewHouse } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
 import RootLayout from '../components/RootLayout';
@@ -32,18 +33,19 @@ const AddHouse = ({ loading, token, addNewHouse }) => {
 
     upload.end((err, response) => {
       if (err) {
-        console.error(err);
+        return <p>{err}</p>;
       }
 
       if (response.body.secure_url !== '') {
+        if (loading) { return (<Loading />); }
         const image = response.body.secure_url;
-        console.log('Uplaoded: ', image);
         const houseData = {
           name, description, image, price,
         };
         addNewHouse(houseData, token);
         setToHome(true);
       }
+      return null;
     });
   };
 
@@ -90,11 +92,14 @@ const mapDispatchToProps = dispatch => ({
   addNewHouse: (house, token) => dispatch(addNewHouse(house, token)),
 });
 
-const mapStateToProps = state => {
-  console.log(state);
-  return ({
-    token: state.authReducer.token,
-  });
+const mapStateToProps = state => ({
+  token: state.authReducer.token,
+});
+
+AddHouse.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  token: PropTypes.string.isRequired,
+  addNewHouse: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddHouse);

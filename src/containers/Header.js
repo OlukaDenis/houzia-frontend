@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { userShape } from '../helpers/propTypeShapes';
 import { setToken } from '../redux/actions/actionCreators';
 
 const Header = ({ token, setToken, user }) => {
@@ -34,5 +36,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setToken: () => dispatch(setToken('')),
 });
+
+Header.propTypes = {
+  user: PropTypes.objectOf(userShape).isRequired,
+  token: PropTypes.string.isRequired,
+  setToken: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

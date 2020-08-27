@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import RootLayout from '../components/RootLayout';
 import { allHouses } from '../redux/actions/houseAction';
 import HouseListItem from '../components/HouseListItem';
 import Loading from '../components/Loading';
+import { houseShape } from '../helpers/propTypeShapes';
 
 const HomePage = props => {
   const {
@@ -39,13 +41,20 @@ const mapDispatchToProps = dispatch => ({
   allHouses: token => dispatch(allHouses(token)),
 });
 
-const mapStateToProps = state => {
-  console.log(state);
-  return ({
-    data: state.houseReducer.data,
-    token: state.authReducer.token,
-    loading: state.houseReducer.loading,
-  });
+const mapStateToProps = state => ({
+  data: state.houseReducer.data,
+  token: state.authReducer.token,
+  loading: state.houseReducer.loading,
+});
+
+HomePage.propTypes = {
+  data: PropTypes.arrayOf(houseShape).isRequired,
+  token: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  allHouses: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

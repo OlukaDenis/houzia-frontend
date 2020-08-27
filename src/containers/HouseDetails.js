@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import RootLayout from '../components/RootLayout';
-import { fetchHouseDetails, addHouseToFavorite, removeHouseFromFavorite } from '../redux/actions/houseAction';
+import { fetchHouseDetails } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
 import FavoriteButton from '../components/FavoriteButton';
+import { houseShape } from '../helpers/propTypeShapes';
 
 const HouseDetails = props => {
   const {
@@ -16,16 +18,6 @@ const HouseDetails = props => {
   const { match: { params } } = props;
   const houseId = params.id;
   const favData = { house_id: houseId };
-
-  // const addRemoveFavorite = () => {
-  //   if (isFavorite) {
-  //
-  //   } else {
-  //     addHouseToFavorite(token, favData);
-  //   }
-
-  //   window.location.reload(false);
-  // };
 
   useEffect(() => {
     if (token && houseId) {
@@ -68,13 +60,23 @@ const mapDispatchToProps = dispatch => ({
   fetchHouseDetails: (id, token) => dispatch(fetchHouseDetails(id, token)),
 });
 
-const mapStateToProps = state => {
-  console.log(state);
-  return ({
-    house: state.houseReducer.selectedHouse,
-    loading: state.houseReducer.loading,
-    token: state.authReducer.token,
-  });
+const mapStateToProps = state => ({
+  house: state.houseReducer.selectedHouse,
+  loading: state.houseReducer.loading,
+  token: state.authReducer.token,
+});
+
+HouseDetails.propTypes = {
+  house: PropTypes.objectOf(houseShape).isRequired,
+  loading: PropTypes.bool.isRequired,
+  token: PropTypes.string.isRequired,
+  fetchHouseDetails: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails);

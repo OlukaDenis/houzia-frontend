@@ -12,6 +12,7 @@ const StyledHamburger = styled.div`
   position: fixed:
   top: 15px;
   right: 20px;
+  align-self: center;
   display: none;
   z-index: 1000;
 

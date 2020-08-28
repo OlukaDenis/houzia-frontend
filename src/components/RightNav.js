@@ -8,6 +8,7 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
+  margin-top: 30px;
 
   li {
     padding: 0 10px;
@@ -15,6 +16,14 @@ const Ul = styled.ul`
     font-weight: 700;
     align-self: center;
     margin: 0 0 15px 0;
+
+    a {
+      color: #333;
+      text-decoration: none;
+      &:hover {
+        color: #ff751a;
+      }
+    }
   }
 
   @media (max-width: 768px) {
@@ -25,11 +34,13 @@ const Ul = styled.ul`
     right: 0;
     height: 100vh;
     width: 300px;
+    margin-top: 0;
     padding-top: 3.5rem;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
-
-    a {
-      color: #eee;
+    li {
+      a {
+        color: #eee;
+      }
     }
   }
 `;
@@ -56,7 +67,8 @@ const RightNav = ({
       </li>
       {token && (
       <li>
-        <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button>
+        <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} 
+        className="logout btn btn-outline-primary btn-sm h-btn h-btn-outlined">Logout</button>
         {' '}
       </li>
       )}

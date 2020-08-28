@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Nav = styled.nav`
   width: 100%;
-  height: 55px;
+  height: 58px;
   border-bottom: 1px solid #ddd;
   padding: 0 20px;
   display: flex;
@@ -18,7 +18,7 @@ const Nav = styled.nav`
 const Header = () => {
   return (
     <Nav>
-      <h2 className="heading-title">HOUZIA</h2>
+      <h2 className="logo-title">HOUZIA</h2>
       <Hamburger />
     </Nav>
   );

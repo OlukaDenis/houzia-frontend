@@ -7,7 +7,6 @@ const RootLayout = ({ children }) => (
   <div>
     <RequireAuth />
     <Header />
-    <hr />
     {children}
   </div>
 );

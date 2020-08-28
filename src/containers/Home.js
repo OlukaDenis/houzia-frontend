@@ -6,6 +6,7 @@ import { allHouses } from '../redux/actions/houseAction';
 import HouseListItem from '../components/HouseListItem';
 import Loading from '../components/Loading';
 import { houseShape } from '../helpers/propTypeShapes';
+import { Container, Row } from 'react-bootstrap';
 
 const HomePage = props => {
   const {
@@ -20,19 +21,21 @@ const HomePage = props => {
   }, [token, allHouses]);
 
   const MainPage = () => (
-    <div>
+    <Row>
       {
             data.map(house => (
               <HouseListItem key={house.id} house={house} />
             ))
           }
-    </div>
+    </Row>
   );
 
   return (
     <RootLayout>
-      { loading && <Loading />}
-      { path === '/' && <MainPage />}
+      <Container style={{ paddingTop: 70 }}>
+        { loading && <Loading />}
+        { path === '/' && <MainPage />}
+      </Container>
     </RootLayout>
   );
 };

@@ -13,7 +13,7 @@ const StyledHamburger = styled.div`
   top: 15px;
   right: 20px;
   display: none;
-  z-index: 20;
+  z-index: 1000;
 
   @media (max-width: 768px) {
     display: flex;

@@ -1,8 +1,19 @@
 @import './variables';
 
-.imgDiv {
+.houseCard {
+  z-index: 10;
 
-  img {
-    height: 200px;
+  .houseName {
+    font-weight: bolder;
+  }
+
+  .housePrice {
+    color: $secondary;
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    span {
+      margin-right: 8px;
+    }
   }
 }

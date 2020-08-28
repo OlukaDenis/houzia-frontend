@@ -9,6 +9,7 @@
   &:hover {
     background-color: $secondary;
     border-color: $secondary;
+    color: white;
   }
 }
 
@@ -19,4 +20,27 @@
 .h-btn-filled {
   background-color: $secondary;
   color: white;
+}
+
+.form-input {
+  border-radius: 50px;
+}
+
+.auth-link {
+  color: $blackish;
+  font-weight: 700;
+  font-size: 0.8rem;
+
+  &:hover {
+    color: $secondary;
+    text-decoration: none;
+  }
+}
+
+.auth-title {
+
+}
+
+.image-chooser {
+  margin-left: 30px;
 }

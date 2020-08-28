@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loginUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
+import { Form, Container, Row, Col, Button } from 'react-bootstrap';
 
 const Signin = ({ login, token, error }) => {
   const [email, setEmail] = useState('');
@@ -16,37 +17,55 @@ const Signin = ({ login, token, error }) => {
   };
 
   return (
-    <div>
-      <NoAuth />
-      { (!token && error) && error }
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col lg="auto" md="auto" >
+          <div style={{ marginTop: '50%' }}>
+            <NoAuth />
+            { (!token && error) && error }
 
-      <h1>Signin</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          type="text"
-          onChange={e => setEmail(e.target.value)}
-        />
+            <h1 className="auth-title text-center">Signin</h1>
+            <Form className="mt-5" onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Control 
+                  type="email" 
+                  placeholder="Email" 
+                  className="form-input"
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <br />
-        <br />
-        <input
-          id="password"
-          name="password"
-          placeholder="Password"
-          type="password"
-          onChange={e => setPassword(e.target.value)}
-        />
-        <br />
-        <br />
+              <Form.Group>
+                <Form.Control 
+                  type="password" 
+                  placeholder="Password" 
+                  className="form-input"
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <input type="submit" value="Signin" />
-      </form>
-      <Link to="/signup">Signup</Link>
-
-    </div>
+              <div className="text-center">
+                <button 
+                  variant="primary" 
+                  className="h-btn h-btn-filled btn text-center" 
+                  type="submit"
+                  style={{width: '70%'}}
+                >
+                  Signin
+                </button>
+              </div>
+              
+              <div className="mt-3 text-center">
+              <Link className="auth-link" to="/signup">Create account</Link>
+              </div>
+            </Form>
+          
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

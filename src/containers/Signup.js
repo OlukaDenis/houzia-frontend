@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
+import { Form, Container, Row, Col, Button } from 'react-bootstrap';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
@@ -51,51 +52,82 @@ const Signup = ({ signup }) => {
   };
 
   return (
-    <div>
-      <NoAuth />
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={e => setUserName(e.target.value)}
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-        />
-        <br />
-        <input
-          onChange={e => setEmail(e.target.value)}
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-        />
-        <br />
-        <br />
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col lg="auto" md="auto" >
+          <div style={{ marginTop: '30%' }}>
+            <NoAuth />
+            <h1 className="auth-title text-center">Signup</h1>
+            <Form className="mt-5" onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Control 
+                  type="email" 
+                  placeholder="Username" 
+                  className="form-input"
+                  onChange={e => setUserName(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <input
-          onChange={e => setPassword(e.target.value)}
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
-        <br />
-        <br />
-        <input
-          onChange={e => setPasswordConfirmation(e.target.value)}
-          type="password"
-          name="confirm_password"
-          placeholder="Confirm Password"
-          required
-        />
-        <br />
-        <input type="file" onChange={handleImageChange} />
-        <br />
-        <input type="submit" value="Upload" />
-      </form>
-      <Link to="/signin">Signin</Link>
-    </div>
+              <Form.Group>
+                <Form.Control 
+                  type="email" 
+                  placeholder="Email" 
+                  className="form-input"
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control 
+                  type="password" 
+                  placeholder="Password" 
+                  className="form-input"
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control 
+                  type="password" 
+                  placeholder="Confirm Password" 
+                  className="form-input"
+                  onChange={e => setPasswordConfirmation(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              
+              <Form.Group>
+                <Form.Control 
+                  className="image-chooser" 
+                  type="file" 
+                  onChange={handleImageChange}
+                />
+              </Form.Group>
+
+              <div className="text-center">
+                <button 
+                  variant="primary" 
+                  className="h-btn h-btn-filled btn text-center" 
+                  type="submit"
+                  style={{width: '70%'}}
+                >
+                  Signup
+                </button>
+              </div>
+
+            </Form>
+
+            <div className="mt-3 text-center">
+              <Link  className="auth-link" to="/signin">Already registered?</Link>
+            </div>
+
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

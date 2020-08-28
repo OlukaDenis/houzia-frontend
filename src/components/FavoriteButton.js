@@ -18,7 +18,7 @@ const FavoriteButton = props => {
 
   useEffect(() => {
     setLiked(isFavorite);
-  });
+  }, [isFavorite]);
 
   const handleClick = () => {
     if (liked) {
@@ -34,7 +34,7 @@ const FavoriteButton = props => {
   return (
     <>
       { loading && <p>Updating favorites</p>}
-      { !loading && <button type="button"  className="h-btn btn bt-md h-btn-filled" onClick={handleClick}>{ text }</button>}
+      { !loading && <button type="button" className="h-btn btn bt-md h-btn-filled" onClick={handleClick}>{ text }</button>}
     </>
   );
 };

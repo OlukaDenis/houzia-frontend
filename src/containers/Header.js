@@ -15,13 +15,11 @@ const Nav = styled.nav`
   background-color: #fff;
 `;
 
-const Header = () => {
-  return (
-    <Nav>
-      <h2 className="logo-title">HOUZIA</h2>
-      <Hamburger />
-    </Nav>
-  );
-};
+const Header = () => (
+  <Nav>
+    <h2 className="logo-title">HOUZIA</h2>
+    <Hamburger />
+  </Nav>
+);
 
 export default Header;

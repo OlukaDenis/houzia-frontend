@@ -1,10 +1,9 @@
 import React from 'react';
-// import '../styles/loading.scss';
+import '../styles/Loading.scss';
 
 const Loading = () => (
   <div className="loading-section">
-    {/* <div className="loader" /> */}
-    <p>Loading...</p>
+    <div className="loader" />
   </div>
 
 );

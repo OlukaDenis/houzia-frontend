@@ -3,9 +3,11 @@ import request from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {
+  Form, Container, Row, Col,
+} from 'react-bootstrap';
 import { createUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
-import { Form, Container, Row, Col } from 'react-bootstrap';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
@@ -54,15 +56,15 @@ const Signup = ({ signup }) => {
   return (
     <Container>
       <Row className="justify-content-md-center">
-        <Col lg="auto" md="auto" >
+        <Col lg="auto" md="auto">
           <div style={{ marginTop: '30%' }}>
             <NoAuth />
             <h1 className="auth-title text-center">Signup</h1>
             <Form className="mt-5" onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Control 
-                  type="email" 
-                  placeholder="Username" 
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
                   className="form-input"
                   onChange={e => setUserName(e.target.value)}
                   required
@@ -70,9 +72,9 @@ const Signup = ({ signup }) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Control 
-                  type="email" 
-                  placeholder="Email" 
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
                   className="form-input"
                   onChange={e => setEmail(e.target.value)}
                   required
@@ -80,9 +82,9 @@ const Signup = ({ signup }) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Control 
-                  type="password" 
-                  placeholder="Password" 
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
                   className="form-input"
                   onChange={e => setPassword(e.target.value)}
                   required
@@ -90,29 +92,29 @@ const Signup = ({ signup }) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Control 
-                  type="password" 
-                  placeholder="Confirm Password" 
+                <Form.Control
+                  type="password"
+                  placeholder="Confirm Password"
                   className="form-input"
                   onChange={e => setPasswordConfirmation(e.target.value)}
                   required
                 />
               </Form.Group>
-              
+
               <Form.Group>
-                <Form.Control 
-                  className="image-chooser" 
-                  type="file" 
+                <Form.Control
+                  className="image-chooser"
+                  type="file"
                   onChange={handleImageChange}
                 />
               </Form.Group>
 
               <div className="text-center">
-                <button 
-                  variant="primary" 
-                  className="h-btn h-btn-filled btn text-center" 
+                <button
+                  variant="primary"
+                  className="h-btn h-btn-filled btn text-center"
                   type="submit"
-                  style={{width: '70%'}}
+                  style={{ width: '70%' }}
                 >
                   Signup
                 </button>
@@ -121,7 +123,7 @@ const Signup = ({ signup }) => {
             </Form>
 
             <div className="mt-3 text-center">
-              <Link  className="auth-link" to="/signin">Already registered?</Link>
+              <Link className="auth-link" to="/signin">Already registered?</Link>
             </div>
 
           </div>

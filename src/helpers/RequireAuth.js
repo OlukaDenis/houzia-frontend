@@ -36,7 +36,7 @@ const mapStateToProps = state => (
 
 RequireAuth.propTypes = {
   token: PropTypes.string.isRequired,
-  setToken: PropTypes.string.isRequired,
+  setToken: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequireAuth);

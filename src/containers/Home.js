@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Container, Row } from 'react-bootstrap';
 import RootLayout from '../components/RootLayout';
 import { allHouses } from '../redux/actions/houseAction';
 import HouseListItem from '../components/HouseListItem';
 import Loading from '../components/Loading';
 import { houseShape } from '../helpers/propTypeShapes';
-import { Container, Row } from 'react-bootstrap';
 
 const HomePage = props => {
   const {
@@ -32,7 +32,7 @@ const HomePage = props => {
 
   return (
     <RootLayout>
-      <Container style={{ paddingTop: 70 }}>
+      <Container style={{ paddingTop: 90 }}>
         { loading && <Loading />}
         { path === '/' && <MainPage />}
       </Container>

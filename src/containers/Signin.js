@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {
+  Form, Container, Row, Col,
+} from 'react-bootstrap';
 import { loginUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
-import { Form, Container, Row, Col, Button } from 'react-bootstrap';
+import Loading from '../components/Loading';
 
 const Signin = ({ login, token, error }) => {
   const [email, setEmail] = useState('');
@@ -14,12 +17,13 @@ const Signin = ({ login, token, error }) => {
     event.preventDefault();
     const loginData = { email, password };
     login(loginData);
+    return (<Loading />);
   };
 
   return (
     <Container>
       <Row className="justify-content-md-center">
-        <Col lg="auto" md="auto" >
+        <Col lg="auto" md="auto">
           <div style={{ marginTop: '50%' }}>
             <NoAuth />
             { (!token && error) && error }
@@ -27,9 +31,9 @@ const Signin = ({ login, token, error }) => {
             <h1 className="auth-title text-center">Signin</h1>
             <Form className="mt-5" onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Control 
-                  type="email" 
-                  placeholder="Email" 
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
                   className="form-input"
                   onChange={e => setEmail(e.target.value)}
                   required
@@ -37,9 +41,9 @@ const Signin = ({ login, token, error }) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Control 
-                  type="password" 
-                  placeholder="Password" 
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
                   className="form-input"
                   onChange={e => setPassword(e.target.value)}
                   required
@@ -47,21 +51,21 @@ const Signin = ({ login, token, error }) => {
               </Form.Group>
 
               <div className="text-center">
-                <button 
-                  variant="primary" 
-                  className="h-btn h-btn-filled btn text-center" 
+                <button
+                  variant="primary"
+                  className="h-btn h-btn-filled btn text-center"
                   type="submit"
-                  style={{width: '70%'}}
+                  style={{ width: '70%' }}
                 >
                   Signin
                 </button>
               </div>
-              
+
               <div className="mt-3 text-center">
-              <Link className="auth-link" to="/signup">Create account</Link>
+                <Link className="auth-link" to="/signup">Create account</Link>
               </div>
             </Form>
-          
+
           </div>
         </Col>
       </Row>

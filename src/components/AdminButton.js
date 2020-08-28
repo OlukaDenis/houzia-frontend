@@ -10,7 +10,7 @@ const AdminButton = props => {
 
   useEffect(() => {
     setAdmin(isAdmin);
-  });
+  }, [isAdmin]);
 
   const handleClick = () => {
     if (!admin) {
@@ -27,7 +27,7 @@ const AdminButton = props => {
   const text = admin ? 'Already Admin' : 'Make Admin';
 
   return (
-    <button type="button" onClick={handleClick}>{ text }</button>
+    <button type="button" className="h-btn btn bt-sm h-btn-filled" onClick={handleClick}>{ text }</button>
   );
 };
 

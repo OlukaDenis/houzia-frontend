@@ -10,8 +10,8 @@ import '../styles/HouseDetail.scss';
 const HouseListItem = ({ house }) => {
   const houseId = house.id;
   return (
-    <Col md={6} lg={4} sm={10}  style={{ marginBottom: 16 }} >
-      <Card className="shadow houseCard" style={{ border: 'none'}}>
+    <Col md={6} lg={4} sm={10} style={{ marginBottom: 16 }}>
+      <Card className="shadow houseCard" style={{ border: 'none' }}>
         <Link to={`/house/${houseId}`} className="imgDiv">
           <Card.Img variant="top" src={house.image} style={{ height: 300 }} />
         </Link>

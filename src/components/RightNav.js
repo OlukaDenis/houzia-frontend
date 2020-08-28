@@ -67,8 +67,14 @@ const RightNav = ({
       </li>
       {token && (
       <li>
-        <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} 
-        className="logout btn btn-sm h-btn h-btn-outlined">Logout</button>
+        <button
+          type="button"
+          onClick={handleLogoutClick}
+          onKeyDown={handleLogoutClick}
+          className="logout btn btn-sm h-btn h-btn-outlined"
+        >
+          Logout
+        </button>
         {' '}
       </li>
       )}

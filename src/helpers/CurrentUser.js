@@ -7,7 +7,7 @@ const CurentUser = ({ token, setCurrentUser }) => {
   const userId = parseToken(token);
   useEffect(() => {
     setCurrentUser(userId, token);
-  }, [setCurrentUser]);
+  }, [token, userId, setCurrentUser]);
 
   return null;
 };

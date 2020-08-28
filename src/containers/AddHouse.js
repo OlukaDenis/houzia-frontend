@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { addNewHouse } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
 import RootLayout from '../components/RootLayout';
+import { Form, Container, Row, Col } from 'react-bootstrap';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
@@ -55,35 +56,65 @@ const AddHouse = ({ loading, token, addNewHouse }) => {
 
   return (
     <RootLayout>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={e => setName(e.target.value)}
-          type="text"
-          name="name"
-          placeholder="House Name"
-          required
-        />
-        <br />
-        <input
-          onChange={e => setDescription(e.target.value)}
-          type="text"
-          name="description"
-          placeholder="Description"
-          required
-        />
-        <br />
-        <input
-          onChange={e => setPrice(e.target.value)}
-          type="number"
-          name="price"
-          placeholder="Price"
-          required
-        />
-        <br />
-        <input type="file" onChange={handleImageChange} />
-        <br />
-        <input type="submit" value="Upload" />
-      </form>
+      <Container style={{ paddingTop: 70, marginBottom: 100 }} >
+        <Row className="justify-content-md-center">
+          <Col lg="auto" md="auto" >
+            <h1 style={{marginBottom: 20}} className="auth-title text-center">Add a new house</h1>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Control 
+                  type="text" 
+                  placeholder="House for rent" 
+                  className="form-input"
+                  onChange={e => setName(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control 
+                  as="textarea" 
+                  rows="3" 
+                  placeholder="Description" 
+                  style={{borderRadius: 20}}
+                  onChange={e => setDescription(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Form>
+
+            <Form.Group>
+              <Form.Control 
+                type="number" 
+                placeholder="Price" 
+                className="form-input"
+                onChange={e => setPrice(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Control 
+                className="image-chooser" 
+                type="file" 
+                onChange={handleImageChange}
+              />
+            </Form.Group>
+
+            <div className="text-center">
+                <button 
+                  variant="primary" 
+                  className="h-btn h-btn-filled btn text-center" 
+                  type="submit"
+                  style={{width: '70%'}}
+                >
+                  Add HOuse
+                </button>
+              </div>
+          
+          </Col>
+        </Row>
+      </Container>
     </RootLayout>
   );
 };

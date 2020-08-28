@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -34,8 +34,9 @@ const Ul = styled.ul`
   }
 `;
 
-const RightNav = ({ token, setToken, user, open}) => {
-
+const RightNav = ({
+  token, setToken, user, open,
+}) => {
   const handleLogoutClick = () => {
     setToken();
   };
@@ -43,17 +44,31 @@ const RightNav = ({ token, setToken, user, open}) => {
   return (
     <Ul open={open}>
       <li><Link to="/">Home</Link></li>
-      {user.admin &&  <li><Link to="/newHouse">New House</Link> </li>}
-      <li><Link to="/profile">My Profile</Link> </li>
-      {token &&  <li><button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button> </li>}
+      {user.admin && (
+      <li>
+        <Link to="/newHouse">New House</Link>
+        {' '}
+      </li>
+      )}
+      <li>
+        <Link to="/profile">My Profile</Link>
+        {' '}
+      </li>
+      {token && (
+      <li>
+        <button type="button" onClick={handleLogoutClick} onKeyDown={handleLogoutClick} className="logout">Logout</button>
+        {' '}
+      </li>
+      )}
     </Ul>
-  )
-}
+  );
+};
 
 RightNav.propTypes = {
   user: PropTypes.objectOf(userShape).isRequired,
   token: PropTypes.string.isRequired,
   setToken: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
-export default RightNav
+export default RightNav;

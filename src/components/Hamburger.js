@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import { userShape } from '../helpers/propTypeShapes';
 import { setToken } from '../redux/actions/actionCreators';
 import RightNav from './RightNav';
 
-const StyledHamburger = styled.div `
+const StyledHamburger = styled.div`
   width: 2rem;
   height: 2rem;
   position: fixed:
@@ -24,22 +24,22 @@ const StyledHamburger = styled.div `
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color:  ${({ open }) => open ? '#ff751a' : '#333'};
+    background-color:  ${({ open }) => (open ? '#ff751a' : '#333')};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
 
     &:nth-child(1) {
-      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
     }
 
     &:nth-child(2) {
-      transform: ${({ open }) => open ? 'translateX(100%)' : 'translateX(0)'};
-      opacity: ${({ open }) => open ? 0 : 1};
+      transform: ${({ open }) => (open ? 'translateX(100%)' : 'translateX(0)')};
+      opacity: ${({ open }) => (open ? 0 : 1)};
     }
 
     &:nth-child(3) {
-      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
     }
   }
 `;
@@ -56,7 +56,7 @@ const Hamburger = ({ token, setToken, user }) => {
       {
         user
         && (
-          <RightNav 
+          <RightNav
             user={user}
             token={token}
             setToken={setToken}
@@ -65,7 +65,7 @@ const Hamburger = ({ token, setToken, user }) => {
         )
       }
     </>
-  )
+  );
 };
 
 const mapStateToProps = state => ({
@@ -83,4 +83,4 @@ Hamburger.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hamburger)
+export default connect(mapStateToProps, mapDispatchToProps)(Hamburger);

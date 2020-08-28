@@ -34,7 +34,7 @@ const FavoriteButton = props => {
   return (
     <>
       { loading && <p>Updating favorites</p>}
-      { !loading && <button type="button" onClick={handleClick}>{ text }</button>}
+      { !loading && <button type="button"  className="h-btn btn bt-md h-btn-filled" onClick={handleClick}>{ text }</button>}
     </>
   );
 };

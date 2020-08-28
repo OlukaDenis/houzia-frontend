@@ -1,0 +1,37 @@
+
+.detailPicture {
+  max-height: 500px;
+  position: relative;
+
+  .house-detail-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.712) 0%, rgba(85, 85, 85, 0.418) 35%, rgba(201, 201, 201, 0) 100%);
+  }
+
+  .house-meta {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+
+    .h-meta {
+      padding: 0 20px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  
+}
+

@@ -5,6 +5,7 @@ import { houseShape } from '../helpers/propTypeShapes';
 import { formatCurrency } from '../helpers/appUtils';
 import '../styles/HouseListItem.scss';
 import { Col, Card } from 'react-bootstrap';
+import '../styles/HouseDetail.scss';
 
 const HouseListItem = ({ house }) => {
   const houseId = house.id;
@@ -24,14 +25,6 @@ const HouseListItem = ({ house }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      {/* <div className="houseItem">
-        <Link to={`/house/${houseId}`} className="imgDiv">
-        <div data-testid="image" className="img" style={{ backgroundImage: `url(${house.image})` }} />
-          <div className="img-overlay" />
-        </Link>
-        <p>{house.name}</p>
-        <p>{formatCurrency(house.price)}</p>
-      </div> */}
     </Col>
   );
 };

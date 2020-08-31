@@ -8,6 +8,7 @@ import {
 import { loginUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
 import Loading from '../components/Loading';
+import logo from '../logo.png';
 import HocError from '../components/errors/HocError';
 
 const Signin = ({ login, error }) => {
@@ -29,7 +30,7 @@ const Signin = ({ login, error }) => {
             <div style={{ marginTop: '50%' }}>
               <div className="text-center">
                 <img
-                  src="images/logo.png"
+                  src={logo}
                   style={{ width: 70, height: 70 }}
                   alt="Houzia Logo"
                 />

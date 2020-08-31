@@ -12,8 +12,9 @@ import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
 } from '../helpers/appConfig';
+import HocError from '../components/errors/HocError';
 
-const Signup = ({ signup }) => {
+const Signup = ({ signup, error }) => {
   const [picture, setPicture] = useState(null);
   const [email, setEmail] = useState('');
   const [username, setUserName] = useState('');
@@ -54,89 +55,91 @@ const Signup = ({ signup }) => {
   };
 
   return (
-    <Container>
-      <Row className="justify-content-md-center">
-        <Col lg="auto" md="auto">
-          <div style={{ marginTop: '30%' }}>
-          <div className="text-center">
-            <img 
-            src="images/logo.png"
-            style={{width: 70, height: 70}}
-            alt="Houzia Logo"
-            />
-          </div>
-            <NoAuth />
-            <h1 className="auth-title text-center">Signup</h1>
-            <Form className="mt-4" onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  className="form-input"
-                  onChange={e => setUserName(e.target.value)}
-                  required
-                />
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Control
-                  type="email"
-                  placeholder="Email"
-                  className="form-input"
-                  onChange={e => setEmail(e.target.value)}
-                  required
-                />
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  className="form-input"
-                  onChange={e => setPassword(e.target.value)}
-                  required
-                />
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Control
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="form-input"
-                  onChange={e => setPasswordConfirmation(e.target.value)}
-                  required
-                />
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Control
-                  className="image-chooser"
-                  type="file"
-                  onChange={handleImageChange}
-                />
-              </Form.Group>
-
+    <HocError showError={error}>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col lg="auto" md="auto">
+            <div style={{ marginTop: '30%' }}>
               <div className="text-center">
-                <button
-                  variant="primary"
-                  className="h-btn h-btn-filled btn text-center"
-                  type="submit"
-                  style={{ width: '70%' }}
-                >
-                  Signup
-                </button>
+                <img
+                  src="images/logo.png"
+                  style={{ width: 70, height: 70 }}
+                  alt="Houzia Logo"
+                />
+              </div>
+              <NoAuth />
+              <h1 className="auth-title text-center">Signup</h1>
+              <Form className="mt-4" onSubmit={handleSubmit}>
+                <Form.Group>
+                  <Form.Control
+                    type="text"
+                    placeholder="Username"
+                    className="form-input"
+                    onChange={e => setUserName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Control
+                    type="email"
+                    placeholder="Email"
+                    className="form-input"
+                    onChange={e => setEmail(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    className="form-input"
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Control
+                    type="password"
+                    placeholder="Confirm Password"
+                    className="form-input"
+                    onChange={e => setPasswordConfirmation(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Control
+                    className="image-chooser"
+                    type="file"
+                    onChange={handleImageChange}
+                  />
+                </Form.Group>
+
+                <div className="text-center">
+                  <button
+                    variant="primary"
+                    className="h-btn h-btn-filled btn text-center"
+                    type="submit"
+                    style={{ width: '70%' }}
+                  >
+                    Signup
+                  </button>
+                </div>
+
+              </Form>
+
+              <div className="mt-3 text-center">
+                <Link className="auth-link" to="/signin">Already registered?</Link>
               </div>
 
-            </Form>
-
-            <div className="mt-3 text-center">
-              <Link className="auth-link" to="/signin">Already registered?</Link>
             </div>
-
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          </Col>
+        </Row>
+      </Container>
+    </HocError>
   );
 };
 
@@ -144,8 +147,13 @@ const mapDispatchToProps = dispatch => ({
   signup: user => dispatch(createUser(user)),
 });
 
+const mapStateToProps = state => ({
+  error: state.authReducer.error,
+});
+
 Signup.propTypes = {
   signup: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

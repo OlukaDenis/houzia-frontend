@@ -19,11 +19,11 @@ const Nav = styled.nav`
 const Header = () => (
   <Nav>
     <div>
-    <img 
-      src="images/logo.png"
-      style={{width: 40, height: 40}}
-      alt="Houzia Logo"
-    />  
+      <img
+        src="images/logo.png"
+        style={{ width: 40, height: 40 }}
+        alt="Houzia Logo"
+      />
     </div>
     <Hamburger />
   </Nav>

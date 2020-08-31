@@ -13,7 +13,7 @@ const mapStateToProps = state => (
 );
 
 RequireNoAuth.propTypes = {
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
 };
 
 export default connect(mapStateToProps, null)(RequireNoAuth);

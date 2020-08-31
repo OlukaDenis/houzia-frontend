@@ -24,10 +24,10 @@ const HomePage = props => {
     <Row>
       {
         data.length === 0
-        ? <p style={{ padding: 10, height: 400 }}><em>No houses added </em></p>
-        : data.map(house => (
-              <HouseListItem key={house.id} house={house} />
-            ))
+          ? <p style={{ padding: 10, height: 400 }}><em>No houses added </em></p>
+          : data.map(house => (
+            <HouseListItem key={house.id} house={house} />
+          ))
           }
     </Row>
   );

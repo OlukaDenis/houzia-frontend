@@ -1,68 +1,84 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project: Houzia
 
-## Available Scripts
+This is a final capstone project as part of Microverse's Technical curriculum. The project details can be found [here](https://www.notion.so/Final-Capstone-Project-Find-Your-House-9a424802e7dc48eb8ef40e2ac09397d1).
+The goal of the project is to build a real-world React application that consumes a rails [API](http://houzia-api.herokuapp.com/).
 
-In the project directory, you can run:
+![Houzia](https://user-images.githubusercontent.com/37341054/91775511-e46ab480-ebf3-11ea-887e-38705548322f.png)
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+##### User
+- Signup and login
+- Browse newly added houses
+- View one house.
+- Add house to favorite.
+- View profile and saved houses.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+##### Admin
+- Add new house
+- Edit users
 
-### `yarn test`
+## Built With
+- React
+- ES6
+- Redux
+- Webpack
+- NodeJs
+- SASS
+- Jest
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App Demo
 
-### `yarn build`
+[Live Demo](https://houzia-frontend.herokuapp.com/)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use the [git](https://git-scm.com/downloads) to clone the project to your local machine.
+```sh
+$ git clone https://github.com/OlukaDenis/houzia-frontend.git
+```
 
-### `yarn eject`
+Navigate to the extracted folder
+```sh 
+cd houzia-frontend
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Install the dependencies and modules
+```sh
+$ npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Usage
+```sh
+$ npm start
+```
+This will open the app at port 3000. If it doesn't open, visit ```http://localhost:3000```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Run Tests
+```sh
+$ npm test
+```
+## Author
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+👤 **Denis Oluka**
 
-## Learn More
+[Github](https://github.com/OlukaDenis) | [Twitter](https://twitter.com/dennycodev) | [LinkedIn](https://linkedin.com/in/denis-oluka-)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🤝 Contributing
 
-### Code Splitting
+Contributions, issues and feature requests are welcome!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Show your support
 
-### Analyzing the Bundle Size
+Give a ⭐️ if you like this project!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Acknowledgements
+- [Microverse](https://www.microverse.org/)
+- Design idea by [Alexey Savitskiy on Behance](https://www.behance.net/alexey_savitskiy)
 
-### Making a Progressive Web App
+## 📝 License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This project is licensed under MIT license - see [LICENSE](/LICENSE) for more details.
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

@@ -9,7 +9,7 @@ const RootLayout = ({ children }) => (
     <RequireAuth />
     <Header />
     {children}
-    <Footer />
+    {children && <Footer />}
   </div>
 );
 

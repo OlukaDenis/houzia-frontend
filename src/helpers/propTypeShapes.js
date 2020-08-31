@@ -12,13 +12,13 @@ const userShape = PropTypes.shape({
 });
 
 const houseShape = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  updated_at: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  price: PropTypes.number,
+  updated_at: PropTypes.string,
+  created_at: PropTypes.string,
 });
 
 const favoriteShape = PropTypes.shape({

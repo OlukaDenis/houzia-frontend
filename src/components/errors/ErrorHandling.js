@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,13 +9,8 @@ const ErrorHandling = WrappedComponent => ({ showError, children }) => (
   </WrappedComponent>
 );
 
-ErrorHandling.displayName = 'ErrorHandling';
-
 ErrorHandling.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   showError: PropTypes.string.isRequired,
 };
 

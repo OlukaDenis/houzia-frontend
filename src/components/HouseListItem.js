@@ -13,15 +13,13 @@ const HouseListItem = ({ house }) => {
     <Col md={6} lg={4} sm={10} style={{ marginBottom: 16 }}>
       <Card className="shadow houseCard" style={{ border: 'none' }}>
         <Link to={`/house/${houseId}`} className="imgDiv">
-          <Card.Img variant="top" src={house.image} style={{ height: 300 }} />
+          <Card.Img variant="top"  data-testid="image" src={house.image} style={{ height: 300 }} />
         </Link>
         <Card.Body>
           <Card.Title><p className="houseName">{house.name}</p></Card.Title>
-          <Card.Text>
-            <p className="housePrice">
+          <Card.Text className="housePrice">
               <span>{formatCurrency(house.price)}</span>
               <span>per month</span>
-            </p>
           </Card.Text>
         </Card.Body>
       </Card>
@@ -30,7 +28,11 @@ const HouseListItem = ({ house }) => {
 };
 
 HouseListItem.propTypes = {
-  house: PropTypes.objectOf(houseShape).isRequired,
+  house: houseShape,
 };
+
+HouseListItem.defaultProps = {
+  house: {}
+}
 
 export default HouseListItem;

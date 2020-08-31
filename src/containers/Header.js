@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Hamburger from '../components/Hamburger';
+import logo from '../logo.png';
 import '../styles/Header.scss';
 
 const Nav = styled.nav`
@@ -22,7 +23,7 @@ const Header = () => (
     <Link to="/">
       <div>
         <img
-          src="images/logo.png"
+          src={logo}
           style={{ width: 40, height: 40 }}
           alt="Houzia Logo"
         />

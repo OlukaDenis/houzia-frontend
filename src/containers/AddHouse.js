@@ -9,12 +9,13 @@ import {
 import { addNewHouse } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
 import RootLayout from '../components/RootLayout';
+import HocError from '../components/errors/HocError';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
 } from '../helpers/appConfig';
 
-const AddHouse = ({ token, addNewHouse }) => {
+const AddHouse = ({ token, addNewHouse, error }) => {
   const [picture, setPicture] = useState(null);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -60,6 +61,7 @@ const AddHouse = ({ token, addNewHouse }) => {
   };
 
   return (
+    <HocError showError={error}>
     <RootLayout>
       <Container style={{ paddingTop: 70, marginBottom: 100 }}>
         <Row className="justify-content-md-center">
@@ -120,6 +122,7 @@ const AddHouse = ({ token, addNewHouse }) => {
         </Row>
       </Container>
     </RootLayout>
+    </HocError>
   );
 };
 
@@ -129,11 +132,17 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   token: state.authReducer.token,
+  error: state.houseReducer.error,
 });
 
 AddHouse.propTypes = {
   token: PropTypes.string.isRequired,
+  error: PropTypes.string,
   addNewHouse: PropTypes.func.isRequired,
+};
+
+AddHouse.defaultProps = {
+  error: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddHouse);

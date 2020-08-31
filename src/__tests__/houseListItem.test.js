@@ -11,11 +11,11 @@ describe('House list item', () => {
     name: 'House for sale Kayunga',
     description: '4 bed rooms ',
     image: 'image.png',
-    price: 5020000
-  }
+    price: 5020000,
+  };
 
   it('should render house name', () => {
-    render(<HouseListItem house={house} />,  { wrapper: MemoryRouter });
+    render(<HouseListItem house={house} />, { wrapper: MemoryRouter });
     expect(screen.queryByText(house.name)).toBeVisible();
   });
 

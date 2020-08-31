@@ -62,66 +62,66 @@ const AddHouse = ({ token, addNewHouse, error }) => {
 
   return (
     <HocError showError={error}>
-    <RootLayout>
-      <Container style={{ paddingTop: 70, marginBottom: 100 }}>
-        <Row className="justify-content-md-center">
-          <Col lg="auto" md="auto">
-            <h1 style={{ marginBottom: 20 }} className="auth-title text-center">Add a new house</h1>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Control
-                  type="text"
-                  placeholder="House for rent"
-                  className="form-input"
-                  onChange={e => setName(e.target.value)}
-                  required
-                />
-              </Form.Group>
+      <RootLayout>
+        <Container style={{ paddingTop: 70, marginBottom: 100 }}>
+          <Row className="justify-content-md-center">
+            <Col lg="auto" md="auto">
+              <h1 style={{ marginBottom: 20 }} className="auth-title text-center">Add a new house</h1>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                  <Form.Control
+                    type="text"
+                    placeholder="House for rent"
+                    className="form-input"
+                    onChange={e => setName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  placeholder="Description"
-                  style={{ borderRadius: '20px' }}
-                  onChange={e => setDescription(e.target.value)}
-                  required
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Control
+                    as="textarea"
+                    rows="3"
+                    placeholder="Description"
+                    style={{ borderRadius: '20px' }}
+                    onChange={e => setDescription(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Control
-                  type="number"
-                  placeholder="Price"
-                  className="form-input"
-                  onChange={e => setPrice(e.target.value)}
-                  required
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Control
+                    type="number"
+                    placeholder="Price"
+                    className="form-input"
+                    onChange={e => setPrice(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Control
-                  className="image-chooser"
-                  type="file"
-                  onChange={handleImageChange}
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Control
+                    className="image-chooser"
+                    type="file"
+                    onChange={handleImageChange}
+                  />
+                </Form.Group>
 
-              <div className="text-center">
-                <button
-                  variant="primary"
-                  className="h-btn h-btn-filled btn text-center"
-                  type="submit"
-                  style={{ width: '70%' }}
-                >
-                  Add House
-                </button>
-              </div>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </RootLayout>
+                <div className="text-center">
+                  <button
+                    variant="primary"
+                    className="h-btn h-btn-filled btn text-center"
+                    type="submit"
+                    style={{ width: '70%' }}
+                  >
+                    Add House
+                  </button>
+                </div>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+      </RootLayout>
     </HocError>
   );
 };

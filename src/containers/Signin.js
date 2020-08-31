@@ -10,7 +10,7 @@ import NoAuth from '../helpers/NoAuth';
 import Loading from '../components/Loading';
 import HocError from '../components/errors/HocError';
 
-const Signin = ({ login, token, error }) => {
+const Signin = ({ login, error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -86,13 +86,15 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  token: state.authReducer.token,
   error: state.authReducer.error,
 });
 
+Signin.defaultProps = {
+  error: null,
+};
+
 Signin.propTypes = {
   login: PropTypes.func.isRequired,
-  token: PropTypes.string,
   error: PropTypes.string,
 };
 

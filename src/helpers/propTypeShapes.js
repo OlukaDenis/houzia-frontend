@@ -7,8 +7,8 @@ const userShape = PropTypes.shape({
   admin: PropTypes.bool.isRequired,
   image: PropTypes.string.isRequired,
   password_digest: PropTypes.string.isRequired,
-  updated_at: PropTypes.instanceOf(Date),
-  created_at: PropTypes.instanceOf(Date),
+  updated_at: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
 });
 
 const houseShape = PropTypes.shape({
@@ -17,16 +17,16 @@ const houseShape = PropTypes.shape({
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  updated_at: PropTypes.instanceOf(Date),
-  created_at: PropTypes.instanceOf(Date),
+  updated_at: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
 });
 
 const favoriteShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   house_id: PropTypes.number.isRequired,
   user_id: PropTypes.number.isRequired,
-  updated_at: PropTypes.instanceOf(Date),
-  created_at: PropTypes.instanceOf(Date),
+  updated_at: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
 });
 
 export {

@@ -16,4 +16,8 @@ RequireNoAuth.propTypes = {
   token: PropTypes.string,
 };
 
+RequireNoAuth.defaultProps = {
+  token: null,
+};
+
 export default connect(mapStateToProps, null)(RequireNoAuth);

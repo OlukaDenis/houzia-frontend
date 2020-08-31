@@ -9,7 +9,7 @@ import { fetchHouseDetails } from '../redux/actions/houseAction';
 import Loading from '../components/Loading';
 import FavoriteButton from '../components/FavoriteButton';
 import { formatCurrency } from '../helpers/appUtils';
-import { houseShape } from '../helpers/propTypeShapes';
+import { houseShape, userShape } from '../helpers/propTypeShapes';
 
 const priceStyle = {
   display: 'flex',
@@ -116,6 +116,7 @@ HouseDetails.propTypes = {
   loading: PropTypes.bool.isRequired,
   token: PropTypes.string.isRequired,
   fetchHouseDetails: PropTypes.func.isRequired,
+  user: PropTypes.objectOf(userShape).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,

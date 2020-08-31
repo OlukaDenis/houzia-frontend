@@ -27,6 +27,11 @@ const AddHouse = ({ token, addNewHouse }) => {
     }
   };
 
+  const showLoading = () => <Loading />;
+  if (toHome === true) {
+    return <Redirect to="/" />;
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -49,14 +54,10 @@ const AddHouse = ({ token, addNewHouse }) => {
           addNewHouse(houseData, token);
           setToHome(true);
         }
+        return null;
       });
     }
   };
-
-  const showLoading = () => <Loading />;
-  if (toHome === true) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <RootLayout>

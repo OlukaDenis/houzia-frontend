@@ -156,4 +156,8 @@ Signup.propTypes = {
   error: PropTypes.string,
 };
 
+Signup.defaultProps = {
+  error: null,
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

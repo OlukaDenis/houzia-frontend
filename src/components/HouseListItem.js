@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { houseShape } from '../helpers/propTypeShapes';
 import { formatCurrency } from '../helpers/appUtils';
 import '../styles/HouseListItem.scss';
-import { Col, Card } from 'react-bootstrap';
 import '../styles/HouseDetail.scss';
 
 const HouseListItem = ({ house }) => {

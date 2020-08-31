@@ -24,7 +24,7 @@ const AdminButton = props => {
     }
   };
 
-  const text = admin ? 'Already Admin' : 'Make Admin';
+  const text = admin ? 'Admin' : 'Normal User';
 
   return (
     <button type="button" className="h-btn btn bt-sm h-btn-filled" onClick={handleClick}>{ text }</button>

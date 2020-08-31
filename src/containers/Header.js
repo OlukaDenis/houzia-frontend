@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import Hamburger from '../components/Hamburger';
 import '../styles/Header.scss';
-import styled from 'styled-components';
 
 const Nav = styled.nav`
   width: 100%;
@@ -18,13 +19,15 @@ const Nav = styled.nav`
 
 const Header = () => (
   <Nav>
-    <div>
-      <img
-        src="images/logo.png"
-        style={{ width: 40, height: 40 }}
-        alt="Houzia Logo"
-      />
-    </div>
+    <Link to="/">
+      <div>
+        <img
+          src="images/logo.png"
+          style={{ width: 40, height: 40 }}
+          alt="Houzia Logo"
+        />
+      </div>
+    </Link>
     <Hamburger />
   </Nav>
 );

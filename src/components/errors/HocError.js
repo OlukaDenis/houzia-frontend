@@ -1,6 +1,6 @@
 import React from 'react';
-import withErrorHandling from './errorHandlingHoc';
+import ErrorHandling from './ErrorHandling';
 
-const HocError = withErrorHandling(({ children }) => <div>{children}</div>);
+const HocError = ErrorHandling(({ children }) => <div>{children}</div>);
 
 export default HocError;

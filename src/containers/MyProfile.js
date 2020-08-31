@@ -57,7 +57,7 @@ const MyProfile = ({ user, favoriteHouses, expense }) => {
 
             {
                 favoriteHouses.length === 0
-                  ? <p style={{ padding: 10 }}><em>No favorites </em></p>
+                  ? <p style={{ padding: 10, height: 400 }}><em>No favorites </em></p>
                   : favoriteHouses.map(house => (
                     <HouseListItem key={house.id} house={house} />
                   ))

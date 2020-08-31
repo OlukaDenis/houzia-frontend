@@ -58,9 +58,16 @@ const Signup = ({ signup }) => {
       <Row className="justify-content-md-center">
         <Col lg="auto" md="auto">
           <div style={{ marginTop: '30%' }}>
+          <div className="text-center">
+            <img 
+            src="images/logo.png"
+            style={{width: 70, height: 70}}
+            alt="Houzia Logo"
+            />
+          </div>
             <NoAuth />
             <h1 className="auth-title text-center">Signup</h1>
-            <Form className="mt-5" onSubmit={handleSubmit}>
+            <Form className="mt-4" onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Control
                   type="text"

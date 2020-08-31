@@ -23,7 +23,9 @@ const HomePage = props => {
   const MainPage = () => (
     <Row>
       {
-            data.map(house => (
+        data.length === 0
+        ? <p style={{ padding: 10, height: 400 }}><em>No houses added </em></p>
+        : data.map(house => (
               <HouseListItem key={house.id} house={house} />
             ))
           }

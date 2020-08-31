@@ -9,6 +9,7 @@ const Nav = styled.nav`
   border-bottom: 1px solid #ddd;
   padding: 0 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   position: fixed;
   z-index: 555;
@@ -17,7 +18,13 @@ const Nav = styled.nav`
 
 const Header = () => (
   <Nav>
-    <h2 className="logo-title">HOUZIA</h2>
+    <div>
+    <img 
+      src="images/logo.png"
+      style={{width: 40, height: 40}}
+      alt="Houzia Logo"
+    />  
+    </div>
     <Hamburger />
   </Nav>
 );

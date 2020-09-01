@@ -33,7 +33,7 @@ const MyProfile = ({ user, favoriteHouses, expense }) => {
               type="button"
               className="btn h-btn h-btn-outlined"
             >
-              Edit Users
+              View Users
             </button>
           </Link>
           )}

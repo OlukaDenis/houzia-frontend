@@ -55,6 +55,10 @@ $ npm start
 ```
 This will open the app at port 3000. If it doesn't open, visit ```http://localhost:3000```
 
+**Note:** To run the project locally:
+* Navigate to `src/helpers/appUtils.js` file
+* Change the `BASE_URL` to `http://localhost:3000`
+
 ### Run Tests
 ```sh
 $ npm test

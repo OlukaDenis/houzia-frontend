@@ -79,7 +79,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Hamburger.propTypes = {
-  user: PropTypes.objectOf(userShape).isRequired,
+  user: userShape.isRequired,
   token: PropTypes.string.isRequired,
   setToken: PropTypes.func.isRequired,
 };

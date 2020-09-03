@@ -83,7 +83,7 @@ const RightNav = ({
 };
 
 RightNav.propTypes = {
-  user: PropTypes.objectOf(userShape).isRequired,
+  user: userShape.isRequired,
   token: PropTypes.string.isRequired,
   setToken: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,

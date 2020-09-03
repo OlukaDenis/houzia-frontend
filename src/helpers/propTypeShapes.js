@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 
 const userShape = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  admin: PropTypes.bool.isRequired,
-  image: PropTypes.string.isRequired,
-  password_digest: PropTypes.string.isRequired,
-  updated_at: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  username: PropTypes.string,
+  email: PropTypes.string,
+  admin: PropTypes.bool,
+  image: PropTypes.string,
+  password_digest: PropTypes.string,
+  updated_at: PropTypes.string,
+  created_at: PropTypes.string,
 });
 
 const houseShape = PropTypes.shape({
@@ -22,11 +22,11 @@ const houseShape = PropTypes.shape({
 });
 
 const favoriteShape = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  house_id: PropTypes.number.isRequired,
-  user_id: PropTypes.number.isRequired,
-  updated_at: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  house_id: PropTypes.number,
+  user_id: PropTypes.number,
+  updated_at: PropTypes.string,
+  created_at: PropTypes.string,
 });
 
 export {

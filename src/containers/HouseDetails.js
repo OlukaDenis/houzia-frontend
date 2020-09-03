@@ -112,11 +112,11 @@ const mapStateToProps = state => ({
 });
 
 HouseDetails.propTypes = {
-  house: PropTypes.objectOf(houseShape).isRequired,
+  house: houseShape.isRequired,
   loading: PropTypes.bool.isRequired,
   token: PropTypes.string.isRequired,
   fetchHouseDetails: PropTypes.func.isRequired,
-  user: PropTypes.objectOf(userShape).isRequired,
+  user: userShape.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,

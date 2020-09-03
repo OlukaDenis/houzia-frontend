@@ -88,7 +88,7 @@ const mapStateToProps = state => ({
 });
 
 MyProfile.propTypes = {
-  user: PropTypes.objectOf(userShape).isRequired,
+  user: userShape.isRequired,
   favoriteHouses: PropTypes.arrayOf(houseShape).isRequired,
   expense: PropTypes.number.isRequired,
 };

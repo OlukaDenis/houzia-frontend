@@ -53,18 +53,20 @@ const mapStateToProps = state => ({
   loading: state.houseReducer.loading,
 });
 
+FavoriteButton.defaultProps = {
+  favorite: {},
+};
+
 FavoriteButton.propTypes = {
   token: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   isFavorite: PropTypes.bool.isRequired,
   addHouseToFavorite: PropTypes.func.isRequired,
   removeHouseFromFavorite: PropTypes.func.isRequired,
-  favorite: PropTypes.objectOf(favoriteShape).isRequired,
-  body: PropTypes.objectOf(
-    PropTypes.shape({
-      house_id: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  favorite: favoriteShape,
+  body: PropTypes.shape({
+    house_id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteButton);

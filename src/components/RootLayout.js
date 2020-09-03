@@ -5,12 +5,12 @@ import Header from '../containers/Header';
 import Footer from './Footer';
 
 const RootLayout = ({ children }) => (
-  <div>
+  <section>
     <RequireAuth />
     <Header />
     {children}
     {children && <Footer />}
-  </div>
+  </section>
 );
 
 RootLayout.propTypes = {

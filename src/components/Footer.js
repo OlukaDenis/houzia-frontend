@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/Footer.scss';
 
 const Footer = () => (
-  <div className="footer">
+  <footer className="footer">
     <div className="footer-info">
 
       <div className="social-icons">
@@ -43,7 +43,7 @@ const Footer = () => (
 
       <p>Houzia | All rights reserved</p>
     </div>
-  </div>
+  </footer>
 );
 
 export default Footer;

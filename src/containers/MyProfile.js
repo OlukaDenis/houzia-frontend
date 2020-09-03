@@ -44,7 +44,7 @@ const MyProfile = ({ user, favoriteHouses, expense }) => {
   );
 
   const UserFavorites = () => (
-    <div>
+    <section>
       <h5 style={{
         marginTop: 30, color: '#555', fontWeight: '900', padding: '10px 0',
       }}
@@ -65,7 +65,7 @@ const MyProfile = ({ user, favoriteHouses, expense }) => {
           </Row>
         </div>
       </div>
-    </div>
+    </section>
   );
 
   return (

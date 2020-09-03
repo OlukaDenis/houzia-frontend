@@ -35,7 +35,7 @@ AdminButton.propTypes = {
   token: PropTypes.string.isRequired,
   isAdmin: PropTypes.bool.isRequired,
   updateUser: PropTypes.func.isRequired,
-  user: PropTypes.objectOf(userShape).isRequired,
+  user: userShape.isRequired,
 };
 
 export default AdminButton;

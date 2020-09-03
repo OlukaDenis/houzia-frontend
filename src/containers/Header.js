@@ -19,18 +19,20 @@ const Nav = styled.nav`
 `;
 
 const Header = () => (
-  <Nav>
-    <Link to="/">
-      <div>
-        <img
-          src={logo}
-          style={{ width: 40, height: 40 }}
-          alt="Houzia Logo"
-        />
-      </div>
-    </Link>
-    <Hamburger />
-  </Nav>
+  <header>
+    <Nav>
+      <Link to="/">
+        <div>
+          <img
+            src={logo}
+            style={{ width: 40, height: 40 }}
+            alt="Houzia Logo"
+          />
+        </div>
+      </Link>
+      <Hamburger />
+    </Nav>
+  </header>
 );
 
 export default Header;

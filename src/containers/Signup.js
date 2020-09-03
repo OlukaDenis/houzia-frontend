@@ -9,13 +9,14 @@ import {
 import { createUser } from '../redux/actions/authAction';
 import NoAuth from '../helpers/NoAuth';
 import logo from '../logo.png';
+import Loading from '../components/Loading';
 import {
   CLOUDINARY_UPLOAD_PRESET,
   CLOUDINARY_UPLOAD_URL,
 } from '../helpers/appConfig';
 import HocError from '../components/errors/HocError';
 
-const Signup = ({ signup, error }) => {
+const Signup = ({ signup, error, loading }) => {
   const [picture, setPicture] = useState(null);
   const [email, setEmail] = useState('');
   const [username, setUserName] = useState('');
@@ -140,6 +141,7 @@ const Signup = ({ signup, error }) => {
           </Col>
         </Row>
       </Container>
+      { loading ? <Loading /> : null }
     </HocError>
   );
 };
@@ -150,15 +152,18 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   error: state.authReducer.error,
+  loading: state.authReducer.loading,
 });
 
 Signup.propTypes = {
   signup: PropTypes.func.isRequired,
   error: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 Signup.defaultProps = {
   error: null,
+  loading: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

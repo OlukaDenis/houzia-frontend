@@ -49,12 +49,14 @@ const authReducer = (state = initialState, action) => {
         userProfile: action.data.profile,
         userExpense: action.data.expense,
         userFavorites: action.data.favorites,
+        loading: false,
       };
 
     case SET_TOKEN:
       return {
         ...state,
         token: action.token,
+        loading: false,
       };
 
     case AUTH_ERROR:
@@ -63,6 +65,7 @@ const authReducer = (state = initialState, action) => {
         token: null,
         data: action.error,
         error: action.error.data.message,
+        loading: false,
       };
 
     default:

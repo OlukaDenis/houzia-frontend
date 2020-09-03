@@ -11,7 +11,7 @@ import Loading from '../components/Loading';
 import logo from '../logo.png';
 import HocError from '../components/errors/HocError';
 
-const Signin = ({ login, error }) => {
+const Signin = ({ login, error, loading }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,7 +19,6 @@ const Signin = ({ login, error }) => {
     event.preventDefault();
     const loginData = { email, password };
     login(loginData);
-    return (<Loading />);
   };
 
   return (
@@ -78,6 +77,7 @@ const Signin = ({ login, error }) => {
           </Col>
         </Row>
       </Container>
+      { loading ? <Loading /> : null }
     </HocError>
   );
 };
@@ -88,15 +88,18 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   error: state.authReducer.error,
+  loading: state.authReducer.loading,
 });
 
 Signin.defaultProps = {
   error: null,
+  loading: false,
 };
 
 Signin.propTypes = {
   login: PropTypes.func.isRequired,
   error: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

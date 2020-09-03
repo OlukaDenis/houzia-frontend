@@ -7,7 +7,6 @@ import {
   Form, Container, Row, Col,
 } from 'react-bootstrap';
 import { addNewHouse } from '../redux/actions/houseAction';
-import Loading from '../components/Loading';
 import RootLayout from '../components/RootLayout';
 import HocError from '../components/errors/HocError';
 import {
@@ -28,7 +27,6 @@ const AddHouse = ({ token, addNewHouse, error }) => {
     }
   };
 
-  const showLoading = () => <Loading />;
   if (toHome === true) {
     return <Redirect to="/" />;
   }
@@ -37,7 +35,6 @@ const AddHouse = ({ token, addNewHouse, error }) => {
     e.preventDefault();
 
     if (picture !== null) {
-      showLoading();
       const upload = request.post(CLOUDINARY_UPLOAD_URL)
         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
         .field('file', picture);

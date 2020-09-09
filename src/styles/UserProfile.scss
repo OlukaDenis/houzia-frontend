@@ -1,0 +1,22 @@
+@import './variables';
+
+.userProfile {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+
+  .userInfo {
+    margin-left: 40px;
+    margin-top: 20px;
+
+    .myExpense {
+      color: #888;
+      font-weight: 900;
+      text-transform: uppercase;
+
+      span {
+        font-weight: 200;
+      }
+    }
+  }
+}

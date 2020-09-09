@@ -1,0 +1,9 @@
+@import './variables';
+
+.houseCard {
+  z-index: 10;
+
+  .houseName {
+    font-weight: bolder;
+  }
+}
